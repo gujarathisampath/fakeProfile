@@ -223,10 +223,17 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <summary>Request custom badges</summary>
 <br>
 
+- Upload your badge to Imgur
+- Copy URL of your future badge like this by right-click:
+  
+  - <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif" alt="How to get direcly image from Imgur">
+
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
 - Used command `/badges add` `Name` `Icon` like this:
 
  <img src="https://i.imgur.com/7tB0Zfz.png" alt="/badges add command">
+
+ > Where `icon` you need just place your copied URL from Imgur
 
 - Wait your request approved in [#fakeProfile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually is done.
 </details>
