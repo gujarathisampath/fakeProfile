@@ -38,7 +38,7 @@
 ## ❓What is fakeProfile?
 
 <div align="center">
-  <img src="https://github.com/gujarathisampath/fakeProfile/blob/137947f167b631f6fdbd2ff07ba26e48016c5658/assets/profilepreview.png?raw=true" alt="Preview" width="500">
+  <img src="https://i.imgur.com/nSPGJkS.png" alt="Preview" width="500">
 </div>
 
 **fakeProfile** is a plugin for **Discord mod client** that supports all features related to nitro profile editing without need to use individual plugins to create a complete profile with features such as:
