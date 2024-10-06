@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/gujarathisampath/fakeProfile/assets/66912066/6e4d4059-13aa-40a4-abb1-31543322f64a" alt="Banner Project" width="550">
+  <img src="https://github.com/user-attachments/assets/9285180a-64d5-4111-9ae4-c2f199ad000e" alt="Banner Project" width="550">
 
   <h1><img src="https://i.imgur.com/iDlsg7L.png" alt="Lumi Logo" width="25"><strong>・fakeProfile</strong></h1>
   An <strong>all-in-one</strong></a> plugin to customize your Discord profile
@@ -222,11 +222,18 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <details closed>
 <summary>Request custom badges</summary>
 <br>
+  
+- Upload your badge to Imgur
+- Copy URL of your future badge like this by right-click:
+  
+ <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif" alt="How to get direcly image from Imgur">
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
 - Used command `/badges add` `Name` `Icon` like this:
 
  <img src="https://i.imgur.com/7tB0Zfz.png" alt="/badges add command">
+
+ > Where `icon` you need just place your copied URL from Imgur
 
 - Wait your request approved in [#fakeProfile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually is done.
 </details>
