@@ -401,7 +401,7 @@ export default definePlugin({
         {
             find: "UserProfileStore",
             replacement: {
-                match: /(?<=getUserProfile\(\i\){return )(\i\[\i\])/,
+                match: /(?<=getUserProfile\(\i\){return )(.+?)(?=})/,
                 replace: "$self.profileDecodeHook($1)"
             }
         },
