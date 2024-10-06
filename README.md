@@ -12,6 +12,8 @@
   <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white" alt="CSS"></a>
   <a href="https://discord.gg/ffmkewQ4R7"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord Server"></a>
   <br>
+  <a href="https://github.com/gujarathisampath/fakeProfile/commits/main/"><img src="https://img.shields.io/github/last-commit/gujarathisampath/fakeProfile?&style=for-the-badge&color=FFFFFF&logoColor=D9E0EE&labelColor=42A5F5%22width=%22200"></a>
+  <br>
   <h6><strong>Support For There Clients</strong></h6>
   <a href="https://github.com/pyoncord/Bunny"><img src="https://i.imgur.com/YjtQqBQ.png" alt="Pyoncord" width="50"></a>
   <a href="https://vencord.dev"><img src="https://i.imgur.com/O9cPuLV.png" alt="Vencord" width="50"></a>
