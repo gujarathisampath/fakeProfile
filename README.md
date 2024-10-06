@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/fp_banner_github.png" alt="Banner Project" width="550">
+  <img src="https://github.com/user-attachments/assets/9285180a-64d5-4111-9ae4-c2f199ad000e" alt="Banner Project" width="550">
 
   <h1><img src="https://i.imgur.com/iDlsg7L.png" alt="Lumi Logo" width="25"><strong>・fakeProfile</strong></h1>
   An <strong>all-in-one</strong></a> plugin to customize your Discord profile
