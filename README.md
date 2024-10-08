@@ -181,10 +181,10 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <summary>Click to read</summary>
 <br>
 
-- Go to [#command](https://i.imgur.com/dl6Qh4C.png)
+- Go to [#command](https://imgur.com/dl6Qh4C)
 - Used `/profile avatar upload` command like image below:
 
- <img src="https://github.com/gujarathisampath/fakeProfile/assets/66912066/cd39bd4c-7226-496e-b08e-1c1cd8f12e81" alt="profile avatar upload">
+ <img src="https://i.imgur.com/dl6Qh4C.png" alt="profile avatar upload">
 
 - All that's left for you is to wait until your request is approved in the [#fakeprofile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually is done.
 </details>
