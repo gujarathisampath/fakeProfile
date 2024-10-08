@@ -181,7 +181,7 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <summary>Click to read</summary>
 <br>
 
-- Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
+- Go to [#command](https://i.imgur.com/dl6Qh4C.png)
 - Used `/profile avatar upload` command like image below:
 
  <img src="https://github.com/gujarathisampath/fakeProfile/assets/66912066/cd39bd4c-7226-496e-b08e-1c1cd8f12e81" alt="profile avatar upload">
@@ -228,7 +228,7 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 - Upload your badge to Imgur
 - Copy URL of your future badge like this by right-click:
   
- <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif" alt="How to get direcly image from Imgur">
+ <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif?raw=true" alt="How to get direcly image from Imgur">
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
 - Used command `/badges add` `Name` `Icon` like this:
