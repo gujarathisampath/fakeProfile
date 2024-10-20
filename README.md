@@ -76,7 +76,7 @@
 
 ### 1. Requirement
 
-- The version you are using is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://github.com/Vendicated/Vencord/blob/main/docs/1_INSTALLING.md) to read the installation instructions.
+- The version you are using is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions.
 <details closed>
 <summary>Video tutorial install Vencord DEV</summary>
 <br>
