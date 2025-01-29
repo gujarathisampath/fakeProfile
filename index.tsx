@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { addBadge, BadgePosition, ProfileBadge, removeBadge } from "@api/Badges";
-import { addDecoration, removeDecoration } from "@api/MessageDecorations";
+import { BadgePosition, ProfileBadge } from "@api/Badges";
+import { decorations } from "@api/MessageDecorations";
 import { definePluginSettings } from "@api/Settings";
 import { classNameFactory, enableStyle } from "@api/Styles";
 import ErrorBoundary from "@components/ErrorBoundary";
@@ -59,7 +59,7 @@ const updateBadgesForAllUsers = () => {
                     if (badge.badge_id) {
                         newBadge.id = badge.badge_id;
                     }
-                    addBadge(newBadge);
+                    decorations.add(newBadge);
 
                     if (!UserBadges[userId]) {
                         UserBadges[userId] = [];
@@ -73,7 +73,7 @@ const updateBadgesForAllUsers = () => {
             const badgeStillExists = newBadges && newBadges[index];
 
             if (!badgeStillExists) {
-                removeBadge(existingBadge);
+                decorations.remove(existingBadge);
                 UserBadges[userId].splice(index, 1);
             }
         });
@@ -284,7 +284,7 @@ const BadgeMain = ({ user, wantMargin = true, wantTopMargin = false }: { user: U
     if (!validBadges || validBadges.length === 0) return null;
 
     const icons = validBadges.map((badge, index) => (
-        <div onClick={openModalOnClick} >
+        <div key={index} onClick={openModalOnClick} >
             <BadgeIcon
                 key={index}
                 user={user}
@@ -591,7 +591,7 @@ export default definePlugin({
             if (avatarUrl && typeof avatarUrl === "string") {
                 const parsedUrl = new URL(avatarUrl);
                 const image_name = parsedUrl.pathname.split("/").pop()?.replace("a_", "");
-                return BASE_URL + "/image/" + image_name ?? original(user, animated, size);
+                return BASE_URL + "/image/" + image_name || original(user, animated, size);
             }
         }
         return original(user, animated, size);
