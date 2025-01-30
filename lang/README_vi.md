@@ -18,7 +18,7 @@
   <br>
   <a href="https://github.com/gujarathisampath/fakeProfile/commits/main/"><img src="https://img.shields.io/github/last-commit/gujarathisampath/fakeProfile?&style=for-the-badge&color=FFFFFF&logoColor=D9E0EE&labelColor=42A5F5%22width=%22200"></a>
   <br>
-  <h6><strong>Hỗ trợ cho các cclient</strong></h6>
+  <h6><strong>Hỗ trợ cho các client</strong></h6>
   <a href="https://github.com/pyoncord/Bunny"><img src="https://i.imgur.com/YjtQqBQ.png" alt="Pyoncord" width="50"></a>
   <a href="https://vencord.dev"><img src="https://i.imgur.com/O9cPuLV.png" alt="Vencord" width="50"></a>
   <a href="https://enmity.unbound.rip/"><img src="https://i.imgur.com/L1xE4Bd.png" alt="Enmity" width="50"></a>
