@@ -5,6 +5,7 @@
   <br>
   <a href="https://github.com/gujarathisampath/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
   <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_vi.md"><img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" alt="vi_VN" width="25"></a>
+  <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_ru.md"><img src="https://flagicons.lipis.dev/flags/4x3/ru.svg" alt="ru_RU" width="25"></a>
   <br>
   <h6>Wanna translate? Please fork and make pull request your translate repo.</h6>
 </div>
@@ -47,15 +48,15 @@
 
 **fakeProfile** is a plugin for **Discord mod client** that supports all features related to nitro profile editing without need to use individual plugins to create a complete profile with features such as:
 
-> - ✅ Custom static and animated banner without Nitro[^1] [^2].
-> - ✅ Custom static and animated avatar without Nitro[^1] [^2].
-> - ✅ Choosing Discord's available badges and you can create your own badges[^1] [^3].
-> - ✅ Choosing Discord's available/Custom profile effect without Nitro[^1] [^2].
-> - ✅ Changing theme profile color without Nitro[^1] [^3].
-> - ✅ Selecting and custom decorations without Nitro[^1] [^2].
-> - ✅ Show **fakeProfile** badges in chat[^1] [^3].
-> - ✅ Approval of avatars, banners and badges using **AI** extremely quickly and conveniently. You won't have to wait too long for your request to be sent.
-> - ✅ We pride ourselves on our plugin being the **fastest** 🚀 and **fully automatic** 🔄 refresh every **2 minutes** from the latest request being approved without having to reload Discord or restart the client and of course you can also refresh the plugin manually if you don't want to wait[^1] [^3].
+> - ✅ Custom static and animated banner[^1] [^2].
+> - ✅ Custom static and animated avatar[^1] [^2].
+> - ✅ Choose Discord available badges or you can create your own badges[^1] [^3].
+> - ✅ Choose Discord/Custom profile effect[^1] [^2].
+> - ✅ Change theme profile color[^1] [^3].
+> - ✅ Select Discord/custom decorations[^1] [^2].
+> - ✅ Show **fakeProfile** plugin badges in chat[^1] [^3].
+> - ✅ Approval of avatars, banners and badges using **AI** extremely quickly and conveniently. You won't have to wait too long for your request to be approved or declined.
+> - ✅ We pride ourselves on our plugin being the **fastest** 🚀 and **fully automatic** 🔄 refresh every **2 minutes** from the latest request being approved without having to reload Discord or restart the client and of course you can also refetch the plugin manually(you'll need `VencordToolbox`(for Equicord users `EquicordToolbox`) if you don't want to wait[^1] [^3].
 >   [^1]: This feature is only available to users of this plugin.
 >   [^2]: The feature only works when other plugins related to this feature are disabled because other plugins can override that plugin's features on this plugin.
 >   [^3]: This feature may work with some other plugins.
@@ -70,7 +71,7 @@
 | Profile Themes         | ✅ **3y3 Style** | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ✅ **3y3 Style**      | ❌ **Not Support** |
 | Profile Effects        | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ❌ **Not Support** |
 | Custom Profile Effects | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ❌ **Not Support** |
-| Decoration             | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ✅ **Support**     |
+| Avatar Decoration      | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ✅ **Support**     |
 
 ## 🔨Installation
 
@@ -78,9 +79,10 @@
 <summary>Vencord (DEV Build)</summary>
 <br>
 
-### 1. Requirement
+### 1. Requirements
 
-- The version you are using is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions.
+- The version that you'll use is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions. 
+- **❗❗ After installation Vencord DEV Build you can go to step 2 to continue of installing.**
 <details closed>
 <summary>Video tutorial install Vencord DEV</summary>
 <br>
@@ -97,19 +99,19 @@ Open **Windows Explorer** and select the path where you installed **Vencord** an
 
 - In the `userplugins` folder click on the address bar and type **cmd** and press **enter**.
 
-In **Command Prompt** used this command:
+In **Command Prompt** use this command:
 
 ```shell
 git clone https://github.com/gujarathisampath/fakeProfile.git
 ```
 
-After typing the command line, wait until the download is completed and then type:
+After typing this command, wait until the repository is cloned and then type:
 
 ```shell
 pnpm build
 ```
 
-And that's all. Now you can restart Discord and check **fakeProfile** in **Plugins** setting.
+And that's all. Now you can restart Discord and check **fakeProfile** in `Settings -> Plugins`.
 
 ### 3. How to update fakeProfile plugin?
 
@@ -151,7 +153,7 @@ https://fakeprofile.sampath.tech/
 <summary>Enmity</summary>
 <br>
 
-### Install with Github raw URL:
+### Install with raw.githubusercontent.com:
 
 ```
 https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index.tsx
@@ -171,11 +173,11 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <br>
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Used `/profile banner upload` command like image below:
+- Use `/profile banner upload` command like image below:
 
  <img src="https://i.imgur.com/AtYO0kW.png" alt="profile banner upload">
 
-- All that's left for you is to wait until your request is approved in the [#fakeprofile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually is done.
+- All that's left for you is to wait until your request is approved in the [#fakeprofile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually and done.
 
 </details>
 
@@ -185,12 +187,12 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <summary>Click to read</summary>
 <br>
 
-- Go to [#command](https://imgur.com/dl6Qh4C)
-- Used `/profile avatar upload` command like image below:
+- Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
+- Use `/profile avatar upload` command like image below:
 
  <img src="https://i.imgur.com/dl6Qh4C.png" alt="profile avatar upload">
 
-- All that's left for you is to wait until your request is approved in the [#fakeprofile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually is done.
+- All that's left for you is to wait until your request is approved in the [#fakeprofile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually and done.
 </details>
 
 ### 3. How to choose a profile effect?
@@ -200,7 +202,7 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <br>
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Used command `/profile effects` `effects: Effect in options` like this:
+- Use command `/profile effects` `effects: Effect in options` like this:
 
   <img src="https://i.imgur.com/whE2fht.png" alt="profile effects">
 
@@ -208,7 +210,7 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 
   <img src="https://i.imgur.com/S574Rob.png" alt="profile effects preview">
 
-- After that wait 2 mins or reload manually is done.
+- After that wait 2 mins or reload manually and done.
 </details>
 
 ### 4. How to choose default discord badges or request a custom badge?
@@ -218,11 +220,11 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <br>
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Used command `/badges select` `name` like this:
+- Use command `/badges select` `name` like this:
 
  <img src="https://i.imgur.com/9EnyNxY.png" alt="/badges select command">
 
-- Wait 2 mins or reload manually is done.
+- Wait 2 mins or reload manually and done.
 
 </details>
 <details closed>
@@ -235,41 +237,41 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
  <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif?raw=true" alt="How to get direcly image from Imgur">
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Used command `/badges add` `Name` `Icon` like this:
+- Use command `/badges add` `Name` `Icon` like this:
 
  <img src="https://i.imgur.com/7tB0Zfz.png" alt="/badges add command">
 
  > Where `icon` you need just place your copied URL from Imgur
 
-- Wait your request approved in [#fakeProfile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually is done.
+- All that's left for you is to wait until your request is approved in the [#fakeprofile-logs](https://discord.com/channels/1117373291095662623/1215640664373465129) and wait 2 mins or reload manually and done.
 </details>
 
-### 5. How to manager and remove my badges?
+### 5. How to manage my badges?
 
 <details closed>
 <summary>Click to read</summary>
 <br>
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Used `/badges view` like this image:
+- Use `/badges view` like this image:
 
  <img src="https://i.imgur.com/tNYpOpv.png" alt="badges view commands">
 
-- You can manager or remove badged with command
+- You can manage with badges like that:
 
- <img src="https://i.imgur.com/KO2pjTR.png" alt="bageds manager">
+ <img src="https://i.imgur.com/KO2pjTR.png" alt="badges manage">
 
 - Wait 2 mins or reload manually and done.
 </details>
 
-### 6. How to choose a avatar decorations?
+### 6. How to choose an avatar decorations?
 
 <details closed>
 <summary>Click to read</summary>
 <br>
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Used command `/profile decorations` `decoration: Decoration in options` like this:
+- Use command `/profile decorations` `decoration: Decoration in options` like this:
 
   <img src="https://i.imgur.com/NVG7t5E.png" alt="avatar decorations">
 
@@ -277,10 +279,10 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 
   <img src="https://i.imgur.com/hSuqOmi.png" alt="avatar decorations preview">
 
-- After that wait 2 mins or reload manually is done.
+- After that wait 2 mins or reload manually and done.
 </details>
 
-### 7. How to changed profile theme color?
+### 7. How to change profile theme color?
 
 <details closed>
 <summary>Click to read</summary>
@@ -294,7 +296,7 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
   <img src="https://github.com/sang765/videoupload/blob/main/Discord_1ErcXCAVvA.gif?raw=true" alt="tutorial profile theme">
 </details>
 
-### 8. How to remove fakeProfile avatar or banner?
+### 8. How to remove avatar or banner?
 
 <details closed>
 <summary>Click to read</summary>
