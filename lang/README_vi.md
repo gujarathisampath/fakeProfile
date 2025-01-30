@@ -142,7 +142,7 @@ pnpm build
 ### Cài đặt với URL plugin
 
 ```
-https://fakeprofile.sampath.tech/
+https://bunnyfakeprofile.is-always.online/
 ```
 
 </details>
