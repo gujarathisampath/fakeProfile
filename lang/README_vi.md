@@ -6,7 +6,7 @@
   <a href="https://github.com/gujarathisampath/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
   <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_vi.md"><img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" alt="vi_VN" width="25"></a>
   <br>
-  <h6>Muốn dịch ư? Vui lòng fork và pull reqest bản dịch của bạn.</h6>
+  <h6>Muốn dịch ư? Vui lòng fork và pull request bản dịch của bạn.</h6>
 </div>
 
 <!-- MARKDOWN BADGED -->

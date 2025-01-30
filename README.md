@@ -6,7 +6,7 @@
   <a href="https://github.com/gujarathisampath/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
   <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_vi.md"><img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" alt="vi_VN" width="25"></a>
   <br>
-  <h6>Wanna translate? Plese fork and make pull request your translate repo.</h6>
+  <h6>Wanna translate? Please fork and make pull request your translate repo.</h6>
 </div>
 
 <!-- MARKDOWN BADGED -->
