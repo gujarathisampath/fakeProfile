@@ -143,7 +143,7 @@ pnpm inject
 ### Установить плагин через URL
 
 ```
-https://fakeprofile.sampath.tech/
+https://bunnyfakeprofile.is-always.online/
 ```
 
 </details>
