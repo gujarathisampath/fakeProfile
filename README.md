@@ -143,7 +143,7 @@ That all. Restart your Discord client and enjoy.
 ### Install with plugin URL
 
 ```
-https://fakeprofile.sampath.tech/
+https://bunnyfakeprofile.is-always.online/
 ```
 
 </details>
