@@ -1,8 +1,12 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/9285180a-64d5-4111-9ae4-c2f199ad000e" alt="Banner Project" width="550">
-
   <h1><img src="https://i.imgur.com/iDlsg7L.png" alt="Lumi Logo" width="25"><strong>・fakeProfile</strong></h1>
   An <strong>all-in-one</strong></a> plugin to customize your Discord profile
+  <br>
+  <a href="https://github.com/gujarathisampath/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
+  <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_vi.md"><img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" alt="vi_VN" width="25"></a>
+  <br>
+  <h6>Wanna translate? Plese fork and make pull request your translate repo.</h6>
 </div>
 
 <!-- MARKDOWN BADGED -->
@@ -224,10 +228,10 @@ https://raw.githubusercontent.com/gujarathisampath/bunny-plugin/master/src/index
 <details closed>
 <summary>Request custom badges</summary>
 <br>
-  
+
 - Upload your badge to Imgur
 - Copy URL of your future badge like this by right-click:
-  
+
  <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif?raw=true" alt="How to get direcly image from Imgur">
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
@@ -353,5 +357,5 @@ If you feel loved or interested in this project, you can leave us a **star** and
 <br>
 <div align="center">
   <img src="https://i.imgur.com/iDlsg7L.png" alt="Lumi Logo" width="100">
-  <h6>@2023-2024 <strong>Lumi Comunity</strong></h6>
+  <h6>@2023-2025 <strong>Lumi Comunity</strong></h6>
 </div>
