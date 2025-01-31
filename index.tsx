@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { BadgePosition, ProfileBadge } from "@api/Badges";
-import { decorations } from "@api/MessageDecorations";
+import { addProfileBadge, BadgePosition, ProfileBadge, removeProfileBadge } from "@api/Badges";
+import { addMessageDecoration, removeMessageDecoration } from "@api/MessageDecorations";
 import { definePluginSettings } from "@api/Settings";
 import { classNameFactory, enableStyle } from "@api/Styles";
 import ErrorBoundary from "@components/ErrorBoundary";
@@ -59,7 +59,7 @@ const updateBadgesForAllUsers = () => {
                     if (badge.badge_id) {
                         newBadge.id = badge.badge_id;
                     }
-                    decorations.add(newBadge);
+                    addProfileBadge(newBadge);
 
                     if (!UserBadges[userId]) {
                         UserBadges[userId] = [];
@@ -73,7 +73,7 @@ const updateBadgesForAllUsers = () => {
             const badgeStillExists = newBadges && newBadges[index];
 
             if (!badgeStillExists) {
-                decorations.remove(existingBadge);
+                removeProfileBadge(existingBadge);
                 UserBadges[userId].splice(index, 1);
             }
         });
@@ -316,12 +316,7 @@ const BadgeMain = ({ user, wantMargin = true, wantTopMargin = false }: { user: U
 export default definePlugin({
     name: "fakeProfile",
     description: "Unlock Discord profile effects, themes, avatar decorations, and custom badges without the need for Nitro.",
-    authors: [{ name: "Sampath", id: 984015688807100419n },
-    Devs.Alyxia,
-    Devs.Remty,
-    Devs.AutumnVN,
-    Devs.pylix,
-    Devs.TheKodeToad,],
+    authors: [{ name: "Sampath", id: 984015688807100419n }, Devs.Alyxia, Devs.Remty, Devs.AutumnVN, Devs.pylix, Devs.TheKodeToad],
     dependencies: ["MessageDecorationsAPI"],
     start: async () => {
         enableStyle(style);
@@ -331,7 +326,7 @@ export default definePlugin({
             updateBadgesForAllUsers();
         }
         if (settings.store.showCustomBadgesinmessage) {
-            addDecoration("custom-badge", props =>
+            addMessageDecoration("custom-badge", props =>
                 <ErrorBoundary noop>
                     <BadgeMain user={props.message?.author} wantTopMargin={true} />
                 </ErrorBoundary>
@@ -359,7 +354,7 @@ export default definePlugin({
     },
     stop: () => {
         if (settings.store.showCustomBadgesinmessage) {
-            removeDecoration("custom-badge");
+            removeMessageDecoration("custom-badge");
         }
     },
     patches: [
@@ -459,7 +454,7 @@ export default definePlugin({
             find: "renderAvatarWithPopout(){",
             replacement: [
                 {
-                    match: /(?<=\)\({(?:(?:.(?!\)}))*,)?avatarDecoration:)(\i)\.avatarDecoration(?=,|}\))/,
+                    match: /(?<=\i\)\({avatarDecoration:)(\i)(?=,)(?<=currentUser:(\i).+?)/,
                     replace: "$self.useUserAvatarDecoration($1)??$&"
                 }
             ]
@@ -591,10 +586,12 @@ export default definePlugin({
             if (avatarUrl && typeof avatarUrl === "string") {
                 const parsedUrl = new URL(avatarUrl);
                 const image_name = parsedUrl.pathname.split("/").pop()?.replace("a_", "");
-                return BASE_URL + "/image/" + image_name || original(user, animated, size);
+                if (image_name) {
+                    return BASE_URL + "/image/" + image_name;
+                }
             }
+            return original(user, animated, size);
         }
-        return original(user, animated, size);
     },
     getAvatarDecorationURL({ avatarDecoration, canAnimate }: { avatarDecoration: AvatarDecoration | null; canAnimate?: boolean; }) {
         if (!avatarDecoration || !settings.store.enableAvatarDecorations) return;
