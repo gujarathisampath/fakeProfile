@@ -43,7 +43,8 @@
 ## ❓Что такое fakeProfile?
 
 <div align="center">
-  <img src="https://i.imgur.com/nSPGJkS.png" alt="Preview" width="500">
+  <img src="https://i.imgur.com/ItcL2g0.png" alt="Preview" width="500">
+<h6><strong>Превью сделано <a href="https://github.com/sang765">@sang765</a></strong></h6>
 </div>
 
 **fakeProfile** это плагин для **модифицированного Discord-клиента**, который поддерживает все плюшки связанные с Nitro без необходимости использовать индивидуальные плагины с такими плюшками как:

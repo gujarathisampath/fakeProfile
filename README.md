@@ -43,7 +43,8 @@
 ## ❓What is fakeProfile?
 
 <div align="center">
-  <img src="https://i.imgur.com/nSPGJkS.png" alt="Preview" width="500">
+  <img src="https://i.imgur.com/ItcL2g0.png" alt="Preview" width="500">
+  <h6><strong>Preview made by <a href="https://github.com/sang765">@sang765</a></strong></h6>
 </div>
 
 **fakeProfile** is a plugin for **Discord mod client** that supports all features related to nitro profile editing without need to use individual plugins to create a complete profile with features such as:
@@ -81,7 +82,7 @@
 
 ### 1. Requirements
 
-- The version that you'll use is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions. 
+- The version that you'll use is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions.
 - **❗❗ After installation Vencord DEV Build you can go to step 2 to continue of installing.**
 <details closed>
 <summary>Video tutorial install Vencord DEV</summary>
