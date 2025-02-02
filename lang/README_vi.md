@@ -43,7 +43,8 @@
 ## ❓fakeProfile là gì?
 
 <div align="center">
-    <img src="https://i.imgur.com/nSPGJkS.png" alt="Preview" width="500">
+  <img src="https://i.imgur.com/ItcL2g0.png" alt="Preview" width="500">
+  <h6><strong>Preview được làm bởi <a href="https://github.com/sang765">@sang765</a></strong></h6>
 </div>
 
 **fakeProfile** là một plugin cho **Discord mod client** hỗ trợ tất cả các tính năng liên quan đến chỉnh sửa hồ sơ nitro mà không cần sử dụng các plugin riêng lẻ để tạo hồ sơ hoàn chỉnh với các tính năng như:
