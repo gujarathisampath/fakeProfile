@@ -40,7 +40,6 @@ const updateBadgesForAllUsers = () => {
         if (newBadges) {
             newBadges.forEach((badge, index) => {
                 const existingBadge = existingBadges[index];
-
                 if (!existingBadge) {
                     const newBadge = {
                         image: badge.icon,
@@ -60,11 +59,9 @@ const updateBadgesForAllUsers = () => {
                         newBadge.id = badge.badge_id;
                     }
                     addProfileBadge(newBadge);
-
                     if (!UserBadges[userId]) {
                         UserBadges[userId] = [];
                     }
-
                     UserBadges[userId].splice(index, 0, newBadge);
                 }
             });
@@ -80,30 +77,56 @@ const updateBadgesForAllUsers = () => {
     });
 };
 
-async function loadfakeProfile(noCache = false) {
-    try {
-        const init = {} as RequestInit;
-        if (noCache)
-            init.cache = "no-cache";
+const CACHE_DURATION = 5 * 60 * 1000;
+let lastFetch = 0;
+let updateInterval: NodeJS.Timeout | null = null;
 
-        const response = await fetch(API_URL + "/fakeProfile", init);
+// Replace loadfakeProfile function
+async function loadfakeProfile(force = false) {
+    const now = Date.now();
+    if (!force && now - lastFetch < CACHE_DURATION) {
+        return UsersData;
+    }
+
+    try {
+        const response = await fetch(API_URL + "/fakeProfile", {
+            cache: force ? "no-cache" : "default",
+            headers: { "Cache-Control": force ? "no-cache" : "max-age=300" }
+        });
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
+
         UsersData = data;
+        lastFetch = now;
+
+        if (settings.store.enableCustomBadges) {
+            updateBadgesForAllUsers();
+        }
+
+        return data;
     } catch (error) {
-        console.error("Error loading fake profile:", error);
+        console.error("[fakeProfile] Error loading profile data:", error);
+        return null;
     }
 }
-async function loadCustomEffects(noCache = false) {
-    try {
-        const init = {} as RequestInit;
-        if (noCache)
-            init.cache = "no-cache";
 
-        const response = await fetch(BASE_URL + "/profile-effects", init);
+// Replace loadCustomEffects function
+async function loadCustomEffects(force = false) {
+    try {
+        const response = await fetch(BASE_URL + "/profile-effects", {
+            cache: force ? "no-cache" : "default",
+            headers: { "Cache-Control": force ? "no-cache" : "max-age=300" }
+        });
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
+
         CustomEffectsData = data;
+        return data;
     } catch (error) {
-        console.error("Error loading custom profile effects:", error);
+        console.error("[fakeProfile] Error loading effects:", error);
+        return null;
     }
 }
 
@@ -313,6 +336,8 @@ const BadgeMain = ({ user, wantMargin = true, wantTopMargin = false }: { user: U
         </span>
     );
 };
+
+
 export default definePlugin({
     name: "fakeProfile",
     description: "Unlock Discord profile effects, themes, avatar decorations, and custom badges without the need for Nitro.",
@@ -320,18 +345,30 @@ export default definePlugin({
     dependencies: ["MessageDecorationsAPI"],
     start: async () => {
         enableStyle(style);
-        await loadCustomEffects(true);
-        await loadfakeProfile(true);
+
+        // Initial load
+        await Promise.all([
+            loadCustomEffects(true),
+            loadfakeProfile(true)
+        ]);
+
         if (settings.store.enableCustomBadges) {
             updateBadgesForAllUsers();
         }
+
         if (settings.store.showCustomBadgesinmessage) {
-            addMessageDecoration("custom-badge", props =>
+            addMessageDecoration("custom-badge", props => (
                 <ErrorBoundary noop>
-                    <BadgeMain user={props.message?.author} wantTopMargin={true} />
+                    <BadgeMain
+                        user={props.message?.author}
+                        wantMargin={true}
+                        wantTopMargin={true}
+                    />
                 </ErrorBoundary>
-            );
+            ));
         }
+
+        // Check for updates
         const response = await fetch(BASE_URL + "/fakeProfile");
         const data = await response.json();
         if (data.version !== VERSION) {
@@ -339,20 +376,34 @@ export default definePlugin({
                 message: "There is an update available for the fakeProfile plugin.",
                 id: Toasts.genId(),
                 type: Toasts.Type.MESSAGE,
-                options: {
-                    position: Toasts.Position.BOTTOM
-                }
+                options: { position: Toasts.Position.BOTTOM }
             });
         }
-        setInterval(async () => {
-            await loadCustomEffects(true);
-            await loadfakeProfile(true);
-            if (settings.store.enableCustomBadges) {
-                updateBadgesForAllUsers();
+
+        // Set up periodic updates
+        const intervalTime = Math.max(data.reloadInterval || 300000, CACHE_DURATION);
+        updateInterval = setInterval(async () => {
+            const [effects, profiles] = await Promise.all([
+                loadCustomEffects(),
+                loadfakeProfile()
+            ]);
+
+            if (effects || profiles) {
+                console.log("[fakeProfile] Data refreshed successfully");
             }
-        }, data.reloadInterval);
+        }, intervalTime);
     },
+
     stop: () => {
+        if (updateInterval) {
+            clearInterval(updateInterval);
+            updateInterval = null;
+        }
+
+        Object.values(UserBadges).flat().forEach(badge => {
+            removeProfileBadge(badge);
+        });
+
         if (settings.store.showCustomBadgesinmessage) {
             removeMessageDecoration("custom-badge");
         }
@@ -491,7 +542,6 @@ export default definePlugin({
     profileDecodeHook(user: UserProfile) {
         if (user) {
             if (settings.store.enableProfileEffects || settings.store.enableProfileThemes) {
-                console.log(user);
                 let mergeData: Partial<UserProfile> = {};
                 const profileEffect = getUserEffect(user.userId);
                 const colors = decode(user.bio);
