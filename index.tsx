@@ -16,13 +16,14 @@ import { Margins } from "@utils/margins";
 import { copyWithToast } from "@utils/misc";
 import { closeModal, Modals, openModal } from "@utils/modal";
 import definePlugin, { OptionType } from "@utils/types";
-import { findByCodeLazy } from "@webpack";
+import { findComponentByCodeLazy } from "@webpack";
 import { Button, Forms, Toasts, Tooltip, useEffect, useState } from "@webpack/common";
 import { User } from "discord-types/general";
 import virtualMerge from "virtual-merge";
 
 import { API_URL, BASE_URL, SKU_ID, SKU_ID_DISCORD, VERSION } from "./constants";
-const CustomizationSection = findByCodeLazy(".customizationSectionBackground");
+
+const CustomizationSection = findComponentByCodeLazy(".customizationSectionBackground");
 const cl = classNameFactory("vc-decoration-");
 
 
@@ -502,20 +503,21 @@ export default definePlugin({
             ]
         },
         {
-            find: "renderAvatarWithPopout(){",
-            replacement: [
-                {
-                    match: /(?<=\i\)\({avatarDecoration:)(\i)(?=,)(?<=currentUser:(\i).+?)/,
-                    replace: "$self.useUserAvatarDecoration($1)??$&"
-                }
-            ]
-        },
-        {
             find: "\"ProfileEffectStore\"",
             replacement: {
                 match: /getProfileEffectById\((\i)\){return null!=\i\?(\i)\[\i\]:void 0/,
                 replace: "getProfileEffectById($1){return $self.getProfileEffectById($1, $2)"
             }
+        },
+        {
+            find: "#{intl::ACCOUNT_SPEAKING_WHILE_MUTED}",
+            replacement: [
+                // Use Decor avatar decoration hook
+                {
+                    match: /(?<=\i\)\({avatarDecoration:)(\i)(?=,)(?<=currentUser:(\i).+?)/,
+                    replace: "$self.useUserAvatarDecoration($1)??$&"
+                }
+            ]
         }
     ],
     settingsAboutComponent: () => (
