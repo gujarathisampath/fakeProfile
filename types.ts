@@ -30,6 +30,7 @@ export interface UserProfile extends User {
     themeColors?: Array<number>;
 
 }
+
 export interface UserProfileData {
     profile_effect: string;
     custom_profile_effect?: string;
@@ -37,6 +38,7 @@ export interface UserProfileData {
     avatar: string;
     badges: Badge[];
     decoration: DecorationData;
+    nameplate: Nameplate;
 }
 
 export interface ProfileEffectConfig {
@@ -77,4 +79,14 @@ export interface fakeProfileSectionProps {
     hideTitle?: boolean;
     hideDivider?: boolean;
     noMargin?: boolean;
+}
+
+export interface Nameplate {
+    imgAlt: string;
+    palette: {
+        darkBackground: string;
+        lightBackground: string;
+        name: string;
+    };
+    src: string;
 }
