@@ -1,6 +1,6 @@
 /*
  * Vencord, a Discord client mod
- * Copyright (c) 2024 Vendicated and contributors
+ * Copyright (c) 2025 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -12,6 +12,7 @@ import ErrorBoundary from "@components/ErrorBoundary";
 import { Flex } from "@components/Flex";
 import { Link } from "@components/Link";
 import { Devs } from "@utils/constants";
+import { debounce } from "@utils/index";
 import { Margins } from "@utils/margins";
 import { copyWithToast } from "@utils/misc";
 import { closeModal, Modals, openModal } from "@utils/modal";
@@ -78,57 +79,94 @@ const updateBadgesForAllUsers = () => {
     });
 };
 
-const CACHE_DURATION = 5 * 60 * 1000;
+const CACHE_DURATION = 10 * 60 * 1000;
 let lastFetch = 0;
 let updateInterval: NodeJS.Timeout | null = null;
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 2000;
 
-// Replace loadfakeProfile function
 async function loadfakeProfile(force = false) {
     const now = Date.now();
     if (!force && now - lastFetch < CACHE_DURATION) {
         return UsersData;
     }
 
-    try {
-        const response = await fetch(API_URL + "/fakeProfile", {
-            cache: force ? "no-cache" : "default",
-            headers: { "Cache-Control": force ? "no-cache" : "max-age=300" }
-        });
+    let retries = 0;
 
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
+    const attemptFetch = async (): Promise<Record<string, UserProfileData> | null> => {
+        try {
+            const response = await fetch(API_URL + "/fakeProfile", {
+                cache: force ? "no-cache" : "default",
+                headers: { "Cache-Control": force ? "no-cache" : "max-age=600" }
+            });
 
-        UsersData = data;
-        lastFetch = now;
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const data = await response.json();
 
-        if (settings.store.enableCustomBadges) {
-            updateBadgesForAllUsers();
+            setTimeout(() => {
+                UsersData = data;
+                lastFetch = now;
+
+                if (settings.store.enableCustomBadges) {
+                    debouncedUpdateBadges();
+                }
+            }, 1000);
+
+            return data;
+        } catch (error) {
+            console.error(`[fakeProfile] Error loading profile data (attempt ${retries + 1}/${MAX_RETRIES}):`, error);
+
+            if (retries < MAX_RETRIES) {
+                retries++;
+                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+                return attemptFetch();
+            }
+
+            return null;
         }
+    };
 
-        return data;
-    } catch (error) {
-        console.error("[fakeProfile] Error loading profile data:", error);
-        return null;
-    }
+    return attemptFetch();
 }
 
-// Replace loadCustomEffects function
+const debouncedUpdateBadges = debounce(() => {
+    updateBadgesForAllUsers();
+}, 1500);
+
 async function loadCustomEffects(force = false) {
-    try {
-        const response = await fetch(BASE_URL + "/profile-effects", {
-            cache: force ? "no-cache" : "default",
-            headers: { "Cache-Control": force ? "no-cache" : "max-age=300" }
-        });
+    let retries = 0;
 
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
+    const attemptFetch = async (): Promise<Record<string, ProfileEffectConfig> | null> => {
+        try {
+            const response = await fetch(BASE_URL + "/profile-effects", {
+                cache: force ? "no-cache" : "default",
+                headers: {
+                    "Cache-Control": force ? "no-cache" : "max-age=600"
+                }
+            });
 
-        CustomEffectsData = data;
-        return data;
-    } catch (error) {
-        console.error("[fakeProfile] Error loading effects:", error);
-        return null;
-    }
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const data = await response.json();
+
+            setTimeout(() => {
+                CustomEffectsData = data;
+            }, 800);
+
+            return data;
+        } catch (error) {
+            console.error(`[fakeProfile] Error loading effects (attempt ${retries + 1}/${MAX_RETRIES}):`, error);
+
+            if (retries < MAX_RETRIES) {
+                retries++;
+                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+                return attemptFetch();
+            }
+
+            return null;
+        }
+    };
+
+    return attemptFetch();
 }
 
 function getUserEffect(profileId: string) {
@@ -169,8 +207,14 @@ function decode(bio: string): Array<number> | null {
 
 
 const settings = definePluginSettings({
+
     enableProfileEffects: {
         description: "Allows you to use profile effects",
+        type: OptionType.BOOLEAN,
+        default: false
+    },
+    enableNameplate: {
+        description: "Allows you to use nameplates",
         type: OptionType.BOOLEAN,
         default: false
     },
@@ -347,7 +391,6 @@ export default definePlugin({
     start: async () => {
         enableStyle(style);
 
-        // Initial load
         await Promise.all([
             loadCustomEffects(true),
             loadfakeProfile(true)
@@ -369,7 +412,6 @@ export default definePlugin({
             ));
         }
 
-        // Check for updates
         const response = await fetch(BASE_URL + "/fakeProfile");
         const data = await response.json();
         if (data.version !== VERSION) {
@@ -381,7 +423,6 @@ export default definePlugin({
             });
         }
 
-        // Set up periodic updates
         const intervalTime = Math.max(data.reloadInterval || 300000, CACHE_DURATION);
         updateInterval = setInterval(async () => {
             const [effects, profiles] = await Promise.all([
@@ -512,10 +553,18 @@ export default definePlugin({
         {
             find: "#{intl::ACCOUNT_SPEAKING_WHILE_MUTED}",
             replacement: [
-                // Use Decor avatar decoration hook
                 {
                     match: /(?<=\i\)\({avatarDecoration:)(\i)(?=,)(?<=currentUser:(\i).+?)/,
                     replace: "$self.useUserAvatarDecoration($1)??$&"
+                }
+            ]
+        },
+        {
+            find: "#{intl::GUILD_OWNER}),",
+            replacement: [
+                {
+                    match: /(?<=\),nameplate:)(\i)/,
+                    replace: "$self.nameplate($1, arguments[0]?.user)"
                 }
             ]
         }
@@ -540,6 +589,12 @@ export default definePlugin({
     settings,
     getProfileEffectById(skuId: string, effects: Record<string, ProfileEffectConfig>) {
         return CustomEffectsData[skuId];
+    },
+    nameplate(nameplate, user) {
+        if (nameplate) return nameplate;
+        if (!settings.store.enableNameplate) return nameplate;
+        const userId = user?.id;
+        if (UsersData[userId] && UsersData[userId].nameplate) return UsersData[userId].nameplate;
     },
     profileDecodeHook(user: UserProfile) {
         if (user) {
