@@ -10,3 +10,24 @@
 [style*="background-image"] [class*="background_"] {
     background-color: transparent !important;
 }
+
+.vc-fpt-preview * {
+    pointer-events: none;
+}
+/* stylelint-disable property-no-vendor-prefix */
+.custom-nameplate {
+    position: absolute;
+    left: 0;
+    border-radius: var(--radius-sm);
+    opacity: 0.8;
+    -webkit-mask-image: linear-gradient(to right, transparent 20%, #fff);
+    mask-image: linear-gradient(to right, transparent 20%, #fff);
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.custom-nameplate ~ div {
+    z-index: 1;
+}
