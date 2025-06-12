@@ -28,8 +28,9 @@ const CustomizationSection = findComponentByCodeLazy(".customizationSectionBackg
 const cl = classNameFactory("vc-decoration-");
 
 
+
 import style from "./index.css?managed";
-import { AvatarDecoration, Colors, fakeProfileSectionProps, ProfileEffectConfig, UserProfile, UserProfileData } from "./types";
+import { AvatarDecoration, Colors, fakeProfileSectionProps, Nameplate, ProfileEffectConfig, UserProfile, UserProfileData } from "./types";
 
 let UsersData = {} as Record<string, UserProfileData>;
 let CustomEffectsData: Record<string, ProfileEffectConfig> = {};
@@ -563,10 +564,21 @@ export default definePlugin({
             find: "#{intl::GUILD_OWNER}),",
             replacement: [
                 {
+                    match: /user:(\i).{0,150}nameplate:(\i).*?name:null.*?(?=avatar:)/,
+                    replace: "$&banner:$self.customnameplate($1, $2),",
+                },
+                {
                     match: /(?<=\),nameplate:)(\i)/,
-                    replace: "$self.nameplate($1, arguments[0]?.user)"
+                    replace: "$self.nameplate($1)"
                 }
             ]
+        },
+        {
+            find: "role:\"listitem\",innerRef",
+            replacement: {
+                match: /focusProps.\i\}=(\i).*?children:\[/,
+                replace: "$&$1.banner,"
+            }
         }
     ],
     settingsAboutComponent: () => (
@@ -590,11 +602,20 @@ export default definePlugin({
     getProfileEffectById(skuId: string, effects: Record<string, ProfileEffectConfig>) {
         return CustomEffectsData[skuId];
     },
-    nameplate(nameplate, user) {
-        if (nameplate) return nameplate;
-        if (!settings.store.enableNameplate) return nameplate;
+    nameplate(nameplate: Nameplate | undefined) {
+        if (!settings.store.enableNameplate && nameplate) return nameplate;
+    },
+    customnameplate(user: User, nameplate: Nameplate | undefined) {
         const userId = user?.id;
-        if (UsersData[userId] && UsersData[userId].nameplate) return UsersData[userId].nameplate;
+        if (UsersData[userId] && UsersData[userId]?.nameplate && settings.store.enableNameplate) {
+            return (<img id={`custom-nameplate-${user.id}`} src={`https://cdn.discordapp.com/assets/collectibles/${UsersData[userId].nameplate.src}static.png`} className="custom-nameplate" />);
+        }
+        if (UsersData[userId] && UsersData[userId]?.custom_nameplate && settings.store.enableNameplate) {
+            const url = UsersData[userId].custom_nameplate;
+            const urlStr = typeof url === "object" ? JSON.stringify(url) : url;
+            return (<img id={`custom-nameplate-${user.id}`} src={urlStr} className="custom-nameplate" />);
+        }
+        return null;
     },
     profileDecodeHook(user: UserProfile) {
         if (user) {
