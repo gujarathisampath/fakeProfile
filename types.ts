@@ -39,6 +39,7 @@ export interface UserProfileData {
     badges: Badge[];
     decoration: DecorationData;
     nameplate: Nameplate;
+    custom_nameplate?: string;
 }
 
 export interface ProfileEffectConfig {
