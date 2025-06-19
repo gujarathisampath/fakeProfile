@@ -165,7 +165,7 @@
 
     <img src="./assets/nameplates_preview.png" alt="nameplates choose">
 
-- Reload fakeProfile or wait 2 minutes. Перезагрузите fakeProfile или подождите 2 минуты.
+- Перезагрузите fakeProfile или подождите 2 минуты.
 </details>
 
 #### Как убрать
