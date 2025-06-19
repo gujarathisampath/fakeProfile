@@ -1,5 +1,8 @@
 # Vencord DEV Build
 ## Windows
+### Установщик
+- Вступайте в наш [Discord-сервер](https://discord.gg/ffmkewQ4R7) и затем идите в `#install-and-info`, чтобы получить установщик.
+
 ### 1. Требование
 
 - Версию, которую вы будете использовать - это **Vencord DEV Build**. Если вы не знаете как установить, то [нажмите сюда](https://docs.vencord.dev/installing/), чтобы прочитать инструкцию по установке.
