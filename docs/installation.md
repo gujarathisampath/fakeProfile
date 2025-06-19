@@ -6,39 +6,21 @@
 ### 1. Requirements
 
 - The version that you'll use is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions, but consider use `https://github.com/gujarathisampath/VeeeCord.git` instead of `https://github.com/Vendicated/Vencord.git` when you're cloning, because VeeeCord have modified version with CSP for fakeProfile.
-- **❗❗ After installation Vencord DEV Build you can go to step 2 to continue of installing.**
 
 ### 2. Install Plugin
 
-Open **Windows Explorer** and select the path where you installed **Vencord** and click on the `src` folder. In the folder you just clicked, create a new folder named `userplugins` _(in case you already have that folder, you can skip creating the `userplugins` folder)_.
-
-- In the `userplugins` folder click on the address bar and type **cmd** and press **enter**.
-
-- In **Command Prompt** use this command:
-
-```shell
-git clone https://github.com/gujarathisampath/fakeProfile.git
-```
-
-- After typing this command, wait until the repository is cloned and then type:
-
-```shell
-pnpm build
-```
-
-- Also if you using default Discord client, use this command below:
-```shell
-pnpm inject
-```
-
-- And that's all. Now you can restart Discord and check **fakeProfile** in `Settings -> Plugins`.
+- You don't need to do that, modified client VeeeCord already have this plugin.
 
 ### 3. How to update fakeProfile plugin?
 
-- Go to `Vencord\src\userplugins\fakeProfile` in adress bar type **cmd** and click to **Command Prompt** type:
+- Go to `VeeeCord/` in adress bar type **cmd**, enter and type in Command Shell this:
 
 ```shell
 git pull
+```
+
+```shell
+pnpm i # Devs of Vencord may have changed some dependencies, so do it to not get broken VeeeCord. :)
 ```
 
 - Then type:
@@ -47,13 +29,13 @@ git pull
 pnpm build
 ```
 
-- If you're not using vesktop then use this command to inject vencord:
-
+- If you're not using Vesktop then use this command to inject vencord:
 ```shell
 pnpm inject
 ```
+- Restart your Discord client(If you're not using Vesktop) and enjoy.
 
-That all. Restart your Discord client and enjoy.
+- That all.
 
 ## Linux
 
@@ -76,6 +58,30 @@ cd userplugins/ && git clone https://github.com/gujarathisampath/fakeProfile.git
 sudo pnpm inject # If you use default Discord client, in custom you need set path to dist/
 ```
 - And after commands you have successfully installed Vencord DEV Build with fakeProfile, but you need to start it manually by `pnpm start`.
+
+### Updating
+- Same as for Windows, just do this in terminal by path `VeeeCord/`:
+```shell
+git pull
+```
+
+```shell
+pnpm i # Devs of Vencord may have changed some dependencies, so do it to not get broken VeeeCord. :)
+```
+
+- Then type:
+
+```shell
+pnpm build
+```
+
+- If you're not using Vesktop then use this command to inject vencord:
+```shell
+sudo pnpm inject
+```
+- Restart your Discord client(If you're not using Vesktop) and enjoy.
+
+- That all.
 
 ## Extension
 - Join to our [Discord server](https://discord.gg/ffmkewQ4R7) and then go to `#install-and-info` for get extension for your browser.

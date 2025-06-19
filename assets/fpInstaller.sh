@@ -7,9 +7,9 @@ FAKEPROFILE_URL='https://github.com/gujarathisampath/fakeProfile.git'
 DISTRIB="$(python3 -c "import platform;print(platform.uname().node)")" #echo "Distribution: $DISTRIB" | And $DISTRIB is only working for linux :)
 
 customClientsPrint() {
-    echo "To apply your Vencord/Equicord with fakeProfile you need to do these things:"
-    echo "Go to Settings -> Vesktop/Equibop Settings -> Scroll down to Vesktop/Equibop Location -> Choose dist/ folder from your Vencord Dev folder -> Restart client and done."
-    echo "You don't need to inject if you using Vesktop or Equibop. Good luck."
+    echo "To apply your Vencord with fakeProfile you need to do these things:"
+    echo "Go to Settings -> Vesktop Settings -> Scroll down to Vesktop Location -> Choose dist/ folder from your Vencord Dev folder -> Restart client and done."
+    echo "You don't need to inject if you using Vesktop. Good luck."
 }
 
 customClients() {
@@ -17,7 +17,7 @@ customClients() {
         read -p "Do you have Vesktop client? [Y/N]: " yn
         case $yn in
             [Yy]* ) customClientsPrint; break;;
-            [Nn]* ) echo "Starting inject command then. Choose Install Vencord/Equicord -> Path of installed Discord" && sudo pnpm inject; break;;
+            [Nn]* ) echo "Starting inject command then. Choose Install Vencord -> Path of installed Discord" && sudo pnpm inject; break;;
             * ) echo "Please answer yes or no.";;
         esac
     done
@@ -47,7 +47,7 @@ done
 if [ -d "$EXIST_DIR" ]; then
     echo "You have already installed Vencord, checking for updating..."
     cd $EXIST_DIR && git pull
-    cd src/userplugins/fakeProfile && git pull
+    pnpm i
     pnpm build; break
 else
     # Checks of distributions
