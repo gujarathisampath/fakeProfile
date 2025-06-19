@@ -1,8 +1,8 @@
 #!/bin/sh
 
 LIBRARIES='git nodejs npm'
-VENCORD_DIRECTORY='Vencord/'
-VENCORD_URL='https://github.com/Vendicated/Vencord.git'
+VENCORD_DIRECTORY='VeeeCord/'
+VENCORD_URL='https://github.com/gujarathisampath/VeeeCord.git'
 FAKEPROFILE_URL='https://github.com/gujarathisampath/fakeProfile.git'
 DISTRIB="$(python3 -c "import platform;print(platform.uname().node)")" #echo "Distribution: $DISTRIB" | And $DISTRIB is only working for linux :)
 
@@ -45,7 +45,7 @@ do
 done
 
 if [ -d "$EXIST_DIR" ]; then
-    echo "You have already installed Vencord/Equicord, checking for updating..."
+    echo "You have already installed Vencord, checking for updating..."
     cd $EXIST_DIR && git pull
     cd src/userplugins/fakeProfile && git pull
     pnpm build; break
