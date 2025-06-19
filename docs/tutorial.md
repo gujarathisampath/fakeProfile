@@ -1,3 +1,6 @@
+> [!WARNING]
+> All actions will do in Discord server by the bot. **TO SEE CHANGES YOU NEED INSTALL PLUGIN. YOU WILL NOT SEE ANY RESULTS WITHOUT PLUGIN, CHECK [installation.md](/docs/installation.md) FOR INSTALLATION INFORMATION.**
+
 ### 1. How to request banner?
 
 <details closed>
@@ -153,7 +156,7 @@
 <br>
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Type `/profile nameplates` command:
+- Type command `/profile nameplates`:
 
     <img src="./assets/nameplates.png" alt="nameplates option">
 
@@ -165,4 +168,5 @@
 </details>
 
 #### How to remove
-- To remove your nameplate type `/profile nameplate_remove` command, then send it and you'll get your nameplate removed. You need also wait 2 minutes or reload it youself.
+- Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
+- To remove your nameplate type command `/profile nameplate_remove`, then send it and you'll get your nameplate removed. You need also wait 2 minutes or reload it youself.
