@@ -150,24 +150,24 @@
 - После этого подождите 2 минуты или перезагрузите вручную.
 </details>
 
-### 9. How to apply nameplates and remove then?
+### 9. How to apply nameplates and remove then? Как применить бейджики и убрать их?
 
 <details closed>
-<summary>Click to read for apply</summary>
+<summary>Нажмите, чтобы прочитать о применении</summary>
 <br>
 
-- Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- Type command `/profile nameplates`:
+- Зайдите в [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
+- Введите команду `/profile nameplates`:
 
     <img src="./assets/nameplates.png" alt="nameplates option">
 
-- Choose any nameplate(type name of nameplate) what you want and then press to apply.
+- Выберите любой бейджик(название бейджика) какой вы хотите, затем нажмите на "Apply".
 
     <img src="./assets/nameplates_preview.png" alt="nameplates choose">
 
-- Reload fakeProfile or wait 2 minutes.
+- Reload fakeProfile or wait 2 minutes. Перезагрузите fakeProfile или подождите 2 минуты.
 </details>
 
-#### How to remove
-- Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
-- To remove your nameplate type command `/profile nameplate_remove`, then send it and you'll get your nameplate removed. You need also wait 2 minutes or reload it youself.
+#### Как убрать
+- Зайдите в [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
+- Чтобы убрать ваш бейджик, введите комманду `/profile nameplate_remove`, затем отправьте его и ваш бейджик будет убран. Вам также нужно подождать 2 минуты или перезагрузить самостоятельно.
