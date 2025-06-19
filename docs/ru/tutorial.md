@@ -159,11 +159,11 @@
 - Зайдите в [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
 - Введите команду `/profile nameplates`:
 
-    <img src="./assets/nameplates.png" alt="nameplates option">
+    <img src="/docs/assets/nameplates.png" alt="nameplates option">
 
 - Выберите любой бейджик(название бейджика) какой вы хотите, затем нажмите на "Apply".
 
-    <img src="./assets/nameplates_preview.png" alt="nameplates choose">
+    <img src="/docs/assets/nameplates_preview.png" alt="nameplates choose">
 
 - Перезагрузите fakeProfile или подождите 2 минуты.
 </details>

@@ -40,7 +40,7 @@
 ## ❓Что такое fakeProfile?
 
 <div align="center">
-  <img src="./docs/assets/preview.png" alt="Preview" width="500">
+  <img src="/docs/assets/preview.png" alt="Preview" width="500">
   <h6><strong>Превью сделано <a href="https://github.com/sang765">@sang765</a></strong></h6>
 </div>
 
