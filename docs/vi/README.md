@@ -31,7 +31,6 @@
 
 - [fakeProfile](#fakeprofile)
     - [❓fakeProfile là gì?](#fakeprofile-là-gì)
-    - [😍So sánh các plugin](#so-sánh-các-plugin)
     - [🔨Cài đặt](#cài-đặt)
     - [❓Hướng dẫn về plugin](#hướng-dẫn-về-plugin)
     - [❔Hỏi đáp](#hỏi-đáp)
@@ -54,23 +53,10 @@
 > - ✅ Thay đổi màu sắc chủ đề hồ sơ mà không cần Nitro[^1] [^3].
 > - ✅ Chọn và tùy chỉnh trang trí mà không cần Nitro[^1] [^2].
 > - ✅ Hiển thị huy hiệu **fakeProfile** trong chat[^1] [^3].
-> - ✅ Phê duyệt avatar, banner và huy hiệu bằng **AI** cực kỳ nhanh chóng và tiện lợi. Bạn sẽ không phải chờ đợi quá lâu để yêu cầu của mình được gửi đi.
 > - ✅ Chúng tôi tự hào về plugin của mình là **nhanh nhất** 🚀 và **hoàn toàn tự động** 🔄 làm mới mỗi **2 phút** từ yêu cầu mới nhất được phê duyệt mà không cần tải lại Discord hoặc khởi động lại client và tất nhiên bạn cũng có thể làm mới plugin thủ công nếu không muốn chờ đợi[^1] [^3].
 >   [^1]: Tính năng này chỉ có sẵn cho người dùng của plugin này.
 >   [^2]: Tính năng chỉ hoạt động khi các plugin khác liên quan đến tính năng này bị vô hiệu hóa vì các plugin khác có thể ghi đè các tính năng của plugin này trên plugin này.
 >   [^3]: Tính năng này có thể hoạt động với một số plugin khác.
-
-## 😍So sánh các plugin
-
-| Tính năng              | **fakeProfile**  | **USRBG**          | **UserPFP**             | **GlobalBadges**   | **FakeProfileThemes** | **Decor**          |
-| ---------------------- | ---------------- | ------------------ | ----------------------- | ------------------ | --------------------- | ------------------ |
-| Banner tùy chỉnh       | ✅ **Hỗ trợ**    | ✅ **Hỗ trợ**      | ❌ **Không hỗ trợ**     | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**   | ❌ **Không hỗ trợ**|
-| Avatar tùy chỉnh       | ✅ **Hỗ trợ**    | ❌ **Không hỗ trợ**| ✅ **Hỗ trợ với CSS**   | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**   | ❌ **Không hỗ trợ**|
-| Huy hiệu tùy chỉnh     | ✅ **Hỗ trợ**    | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**     | ✅ **Hỗ trợ**      | ❌ **Không hỗ trợ**   | ❌ **Không hỗ trợ**|
-| Chủ đề hồ sơ           | ✅ **3y3 Style** | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**     | ❌ **Không hỗ trợ**| ✅ **3y3 Style**      | ❌ **Không hỗ trợ**|
-| Hiệu ứng hồ sơ         | ✅ **Hỗ trợ**    | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**     | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**   | ❌ **Không hỗ trợ**|
-| Hiệu ứng hồ sơ tùy chỉnh| ✅ **Hỗ trợ**   | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**     | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**   | ❌ **Không hỗ trợ**|
-| Trang trí              | ✅ **Hỗ trợ**    | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**     | ❌ **Không hỗ trợ**| ❌ **Không hỗ trợ**   | ✅ **Hỗ trợ**      |
 
 ## 🔨Cài đặt
 
