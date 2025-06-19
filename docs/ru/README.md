@@ -4,8 +4,6 @@
   Плагин <strong>всё в одном</strong> для кастомизации вашего Discord-профиля
   <br>
   <a href="https://github.com/gujarathisampath/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
-  <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_vi.md"><img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" alt="vi_VN" width="25"></a>
-  <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_ru.md"><img src="https://flagicons.lipis.dev/flags/4x3/ru.svg" alt="ru_RU" width="25"></a>
   <br>
   <h6>Хотите перевести? Пожалуйста, сделайте форк и сделайте запрос вашего перевода.</h6>
 </div>
@@ -43,8 +41,8 @@
 ## ❓Что такое fakeProfile?
 
 <div align="center">
-  <img src="https://i.imgur.com/ItcL2g0.png" alt="Preview" width="500">
-<h6><strong>Превью сделано <a href="https://github.com/sang765">@sang765</a></strong></h6>
+  <img src="./docs/assets/preview.png" alt="Preview" width="500">
+  <h6><strong>Превью сделано <a href="https://github.com/sang765">@sang765</a></strong></h6>
 </div>
 
 **fakeProfile** это плагин для **модифицированного Discord-клиента**, который поддерживает все плюшки связанные с Nitro без необходимости использовать индивидуальные плагины с такими плюшками как:

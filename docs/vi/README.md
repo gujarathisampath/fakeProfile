@@ -4,8 +4,6 @@
   <strong>Tất cả trong một</strong></a> plugin để custom Discord profile của bạn
   <br>
   <a href="https://github.com/gujarathisampath/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
-  <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_vi.md"><img src="https://flagicons.lipis.dev/flags/4x3/vn.svg" alt="vi_VN" width="25"></a>
-  <a href="https://github.com/gujarathisampath/fakeProfile/blob/main/lang/README_ru.md"><img src="https://flagicons.lipis.dev/flags/4x3/ru.svg" alt="ru_RU" width="25"></a>
   <br>
   <h6>Muốn dịch ư? Vui lòng fork và pull request bản dịch của bạn.</h6>
 </div>
@@ -43,7 +41,7 @@
 ## ❓fakeProfile là gì?
 
 <div align="center">
-  <img src="https://i.imgur.com/ItcL2g0.png" alt="Preview" width="500">
+  <img src="./docs/assets/preview.png" alt="Preview" width="500">
   <h6><strong>Preview được làm bởi <a href="https://github.com/sang765">@sang765</a></strong></h6>
 </div>
 
