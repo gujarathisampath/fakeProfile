@@ -155,11 +155,11 @@
 - Truy cập kênh [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
 - Gõ lệnh `/profile nameplates`:
 
-    <img src="./assets/nameplates.png" alt="tùy chọn nameplates">
+    <img src="/docs/assets/nameplates.png" alt="tùy chọn nameplates">
 
 - Chọn bất kỳ nameplate nào (gõ tên nameplate) bạn muốn rồi nhấn áp dụng.
 
-    <img src="./assets/nameplates_preview.png" alt="chọn nameplate">
+    <img src="/docs/assets/nameplates_preview.png" alt="chọn nameplate">
 
 - Tải lại fakeProfile hoặc chờ 2 phút.
 </details>
