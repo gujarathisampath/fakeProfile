@@ -58,6 +58,25 @@ That all. Restart your Discord client and enjoy.
 
 ## Linux
 
+### By command
+- You can install fakeProfile and Vencord DEV Build in one command below:
+```shell
+curl -o- 'https://raw.githubusercontent.com/ExtbhiteEAS/fakeProfile/refs/heads/main/assets/fpInstaller.sh' | bash
+```
+
+### Manually
+> [!CAUTION]
+> You need install libraries such as `git nodejs npm` for it.
+
+- You can install fakeProfile and Vencord DEV Build by these command manually:
+```shell
+git clone https://github.com/Vendicated/Vencord.git
+cd Vencord/ && sudo npm i -g pnpm && pnpm i
+cd src/ && mkdir userplugins
+cd userplugins/ && git clone https://github.com/gujarathisampath/fakeProfile.git && pnpm build
+```
+- And after commands you have successfully installed Vencord DEV Build with fakeProfile, but you need to start it manually by `pnpm start`.
+
 ## Bunny (Pyoncord)
 
 > [!NOTE]
