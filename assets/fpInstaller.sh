@@ -2,9 +2,7 @@
 
 LIBRARIES='git nodejs npm'
 VENCORD_DIRECTORY='Vencord/'
-EQUICORD_DIRECTORY='Equicord/'
 VENCORD_URL='https://github.com/Vendicated/Vencord.git'
-EQUICORD_URL='https://github.com/Equicord/Equicord.git'
 FAKEPROFILE_URL='https://github.com/gujarathisampath/fakeProfile.git'
 DISTRIB="$(python3 -c "import platform;print(platform.uname().node)")" #echo "Distribution: $DISTRIB" | And $DISTRIB is only working for linux :)
 
@@ -16,7 +14,7 @@ customClientsPrint() {
 
 customClients() {
     while true; do
-        read -p "Do you have Vesktop or Equibop client? [Y/N]: " yn
+        read -p "Do you have Vesktop client? [Y/N]: " yn
         case $yn in
             [Yy]* ) customClientsPrint; break;;
             [Nn]* ) echo "Starting inject command then. Choose Install Vencord/Equicord -> Path of installed Discord" && sudo pnpm inject; break;;
@@ -34,19 +32,9 @@ vencordInstall() {
     break
 }
 
-equicordInstall() {
-    git clone $EQUICORD_URL
-    cd $EQUICORD_DIRECTORY && sudo npm i -g pnpm && pnpm i
-    cd src/ && mkdir userplugins
-    cd userplugins/ && git clone $FAKEPROFILE_URL && pnpm build
-    customClients
-    break
-}
-
 EXIST_DIR=""
 for dir in \
-    "$VENCORD_DIRECTORY" \
-    "$EQUICORD_DIRECTORY"
+    "$VENCORD_DIRECTORY"
 do
     if ! [ -d "$dir" ]; then
         EXIST_DIR="null"
@@ -72,11 +60,5 @@ else
         read -n 1 -p "Press [Enter] if you did install of these libraries " mainmenuinput
     fi
 
-    echo "Choose client mod which you want."
-    select ve in "Vencord" "Equicord"; do
-        case $ve in
-            Vencord ) vencordInstall; break;;
-            Equicord ) equicordInstall; break;;
-        esac
-    done
+    vencordInstall
 fi
