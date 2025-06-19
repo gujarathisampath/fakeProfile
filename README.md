@@ -33,7 +33,6 @@
 
 - [fakeProfile](#fakeprofile)
   - [❓What is fakeProfile?](#what-is-fakeprofile)
-  - [😍Compare plugins](#compare-plugins)
   - [🔨Installation](#installation)
   - [❓Tutorial about plugin](#tutorial-about-plugin)
   - [❔QnA](#qna)
@@ -56,23 +55,10 @@
 > - ✅ Change theme profile color[^1] [^3].
 > - ✅ Select Discord/custom decorations[^1] [^2].
 > - ✅ Show **fakeProfile** plugin badges in chat[^1] [^3].
-> - ✅ Approval of avatars, banners and badges using **AI** extremely quickly and conveniently. You won't have to wait too long for your request to be approved or declined.
 > - ✅ We pride ourselves on our plugin being the **fastest** 🚀 and **fully automatic** 🔄 refresh every **2 minutes** from the latest request being approved without having to reload Discord or restart the client and of course you can also refetch the plugin manually(you'll need `VencordToolbox`(for Equicord users `EquicordToolbox`) if you don't want to wait[^1] [^3].
 >   [^1]: This feature is only available to users of this plugin.
 >   [^2]: The feature only works when other plugins related to this feature are disabled because other plugins can override that plugin's features on this plugin.
 >   [^3]: This feature may work with some other plugins.
-
-## 😍Compare plugins
-
-| Features               | **fakeProfile**  | **USRBG**          | **UserPFP**             | **GlobalBadges**   | **FakeProfileThemes** | **Decor**          |
-| ---------------------- | ---------------- | ------------------ | ----------------------- | ------------------ | --------------------- | ------------------ |
-| Custom Banner          | ✅ **Support**   | ✅ **Support**     | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ❌ **Not Support** |
-| Custom Avatar          | ✅ **Support**   | ❌ **Not Support** | ✅ **Support with CSS** | ❌ **Not Support** | ❌ **Not Support**    | ❌ **Not Support** |
-| Custom Badge           | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ✅ **Support**     | ❌ **Not Support**    | ❌ **Not Support** |
-| Profile Themes         | ✅ **3y3 Style** | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ✅ **3y3 Style**      | ❌ **Not Support** |
-| Profile Effects        | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ❌ **Not Support** |
-| Custom Profile Effects | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ❌ **Not Support** |
-| Avatar Decoration      | ✅ **Support**   | ❌ **Not Support** | ❌ **Not Support**      | ❌ **Not Support** | ❌ **Not Support**    | ✅ **Support**     |
 
 ## 🔨Installation
 
