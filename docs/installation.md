@@ -1,5 +1,8 @@
 # Vencord DEV Build
 ## Windows
+### Installer
+- Join to our [Discord server](https://discord.gg/ffmkewQ4R7) and then go to `#install-and-info` for get installer.
+
 ### 1. Requirements
 
 - The version that you'll use is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions.
@@ -76,6 +79,9 @@ cd src/ && mkdir userplugins
 cd userplugins/ && git clone https://github.com/gujarathisampath/fakeProfile.git && pnpm build
 ```
 - And after commands you have successfully installed Vencord DEV Build with fakeProfile, but you need to start it manually by `pnpm start`.
+
+## Extension
+- Join to our [Discord server](https://discord.gg/ffmkewQ4R7) and then go to `#install-and-info` for get extension for your browser.
 
 ## Bunny (Pyoncord)
 
