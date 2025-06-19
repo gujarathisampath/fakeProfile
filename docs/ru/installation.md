@@ -89,3 +89,4 @@ cd userplugins/ && git clone https://github.com/gujarathisampath/fakeProfile.git
 
 > [!NOTE]
 > Мы не знаем насчёт этого. Если вы знаете, то пожалуйста, сделайте задачу насчёт этого.
+> Или используйте клиенты как Revange или Vetta, которые имеют поддержку для iOS.

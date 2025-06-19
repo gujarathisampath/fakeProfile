@@ -86,9 +86,10 @@ cd userplugins/ && git clone https://github.com/gujarathisampath/fakeProfile.git
 ## Bunny (Pyoncord)
 
 > [!NOTE]
-> Since of 29.04.2025, Bunny stopped being supported and not working. There was a url for Bunny but it's broken now. Now installation of Android version can be only looked for in Discord server which you can get actual information about it how to install. **Use fork of any Vendetta client.**
+> Since of 04/29/2025, Bunny stopped being supported and not working. There was a url for Bunny but it's broken now. Now installation of Android version can be only looked for in Discord server which you can get actual information about it how to install. **Use fork of any Vendetta client.**
 
 ## Emnity
 
 > [!NOTE]
 > We don't know about this. If you do, please consider to make issue about this.
+> Or use clients like Revange or Vetta that have support for iOS.
