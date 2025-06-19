@@ -145,3 +145,24 @@
 
 - After send that commands wait 2 mins or reload manually is done.
 </details>
+
+### 9. How to apply nameplates and remove then?
+
+<details closed>
+<summary>Click to read for apply</summary>
+<br>
+
+- Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
+- Type `/profile nameplates` command:
+
+    <img src="./assets/nameplates.png" alt="nameplates option">
+
+- Choose any nameplate(type name of nameplate) what you want and then press to apply.
+
+    <img src="./assets/nameplates_preview.png" alt="nameplates choose">
+
+- Reload fakeProfile or wait 2 minutes.
+</details>
+
+#### How to remove
+- To remove your nameplate type `/profile nameplate_remove` command, then send it and you'll get your nameplate removed. You need also wait 2 minutes or reload it youself.
