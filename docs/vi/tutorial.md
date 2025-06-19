@@ -1,3 +1,7 @@
+> [!WARNING]
+> Tất cả hành động sẽ được thực hiện trên máy chủ Discord bởi bot và những thay đổi này chỉ được áp dụng trên máy chủ của fakeProfile, không phải của Discord.
+> **ĐỂ XEM THAY ĐỔI, BẠN CẦN CÀI ĐẶT PLUGIN. BẠN SẼ KHÔNG THẤY BẤT KỲ KẾT QUẢ NÀO NẾU KHÔNG CÓ PLUGIN, HÃY KIỂM TRA [installation.md](/docs/installation.md) ĐỂ BIẾT THÔNG TIN CÀI ĐẶT.**
+
 ### 1. Cách yêu cầu banner?
 
 <details closed>
