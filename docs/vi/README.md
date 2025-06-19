@@ -60,11 +60,11 @@
 
 ## 🔨Cài đặt
 
-Cần hướng dẫn cài đặt? Nhấp vào [installation.md](/docs/installation.md)
+Cần hướng dẫn cài đặt? Nhấp vào [installation.md](/docs/vi/installation.md)
 
 ## ❓Hướng dẫn về plugin
 
-Cần hướng dẫn về plugin? Nhấp vào [tutorial.md](/docs/tutorial.md)
+Cần hướng dẫn về plugin? Nhấp vào [tutorial.md](/docs/vi/tutorial.md)
 
 > [!NOTE]
 > Bạn phải tham gia máy chủ Discord của chúng tôi để yêu cầu banner, avatar và huy hiệu. Bạn có thể **[nhấp vào đây](https://discord.gg/ffmkewQ4R7)** và nó sẽ đưa bạn thẳng đến máy chủ Discord của chúng tôi.
