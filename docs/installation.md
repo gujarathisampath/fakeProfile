@@ -5,44 +5,22 @@
 
 ### 1. Requirements
 
-- The version that you'll use is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions.
-- **❗❗ After installation Vencord DEV Build you can go to step 2 to continue of installing.**
-<details closed>
-<summary>Video tutorial install Vencord DEV</summary>
-<br>
-
-- Youtube video install Vencord DEV Build by [@daveyy1](https://discordappuser.com/users/549244932213309442): _Click image below to watch tutorial_
-
-[![Tutorial Install Third Party Plugin](https://camo.githubusercontent.com/e30590c30a822b3a19fcba0e92cddb3b62aa1b09ac1a10e1958415e26d397090/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f387765786a536f38664e772f6d617872657364656661756c742e6a7067)](https://www.youtube.com/watch?v=8wexjSo8fNw)
-
-</details>
+- The version that you'll use is **Vencord DEV Build**. If you don't know how to install then you can [click here](https://docs.vencord.dev/installing/) to read the installation instructions, but consider use `https://github.com/gujarathisampath/VeeeCord.git` instead of `https://github.com/Vendicated/Vencord.git` when you're cloning, because VeeeCord have modified version with CSP for fakeProfile.
 
 ### 2. Install Plugin
 
-Open **Windows Explorer** and select the path where you installed **Vencord** and click on the `src` folder. In the folder you just clicked, create a new folder named `userplugins` _(in case you already have that folder, you can skip creating the `userplugins` folder)_.
-
-- In the `userplugins` folder click on the address bar and type **cmd** and press **enter**.
-
-In **Command Prompt** use this command:
-
-```shell
-git clone https://github.com/gujarathisampath/fakeProfile.git
-```
-
-After typing this command, wait until the repository is cloned and then type:
-
-```shell
-pnpm build
-```
-
-And that's all. Now you can restart Discord and check **fakeProfile** in `Settings -> Plugins`.
+- You don't need to do that, modified client VeeeCord already have this plugin.
 
 ### 3. How to update fakeProfile plugin?
 
-- Go to `Vencord\src\userplugins\fakeProfile` in adress bar type **cmd** and click to **Command Prompt** type:
+- Go to `VeeeCord/` in adress bar type **cmd**, enter and type in Command Shell this:
 
 ```shell
 git pull
+```
+
+```shell
+pnpm i # Devs of Vencord may have changed some dependencies, so do it to not get broken VeeeCord. :)
 ```
 
 - Then type:
@@ -51,13 +29,13 @@ git pull
 pnpm build
 ```
 
-- If you're not using vesktop then use this command to inject vencord:
-
+- If you're not using Vesktop then use this command to inject vencord:
 ```shell
 pnpm inject
 ```
+- Restart your Discord client(If you're not using Vesktop) and enjoy.
 
-That all. Restart your Discord client and enjoy.
+- That all.
 
 ## Linux
 
@@ -73,12 +51,37 @@ curl -o- 'https://raw.githubusercontent.com/ExtbhiteEAS/fakeProfile/refs/heads/m
 
 - You can install fakeProfile and Vencord DEV Build by these command manually:
 ```shell
-git clone https://github.com/Vendicated/Vencord.git
-cd Vencord/ && sudo npm i -g pnpm && pnpm i
+git clone https://github.com/gujarathisampath/VeeeCord.git
+cd VeeeCord/ && sudo npm i -g pnpm && pnpm i
 cd src/ && mkdir userplugins
 cd userplugins/ && git clone https://github.com/gujarathisampath/fakeProfile.git && pnpm build
+sudo pnpm inject # If you use default Discord client, in custom you need set path to dist/
 ```
 - And after commands you have successfully installed Vencord DEV Build with fakeProfile, but you need to start it manually by `pnpm start`.
+
+### Updating
+- Same as for Windows, just do this in terminal by path `VeeeCord/`:
+```shell
+git pull
+```
+
+```shell
+pnpm i # Devs of Vencord may have changed some dependencies, so do it to not get broken VeeeCord. :)
+```
+
+- Then type:
+
+```shell
+pnpm build
+```
+
+- If you're not using Vesktop then use this command to inject vencord:
+```shell
+sudo pnpm inject
+```
+- Restart your Discord client(If you're not using Vesktop) and enjoy.
+
+- That all.
 
 ## Extension
 - Join to our [Discord server](https://discord.gg/ffmkewQ4R7) and then go to `#install-and-info` for get extension for your browser.

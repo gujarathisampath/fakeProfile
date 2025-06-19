@@ -2,16 +2,7 @@
 ## Windows
 ### 1. Yêu cầu
 
-- Phiên bản bạn đang sử dụng là **Vencord DEV Build**. Nếu bạn không biết cách cài đặt, bạn có thể [nhấp vào đây](https://docs.vencord.dev/installing/) để đọc hướng dẫn cài đặt.
-<details closed>
-<summary>Video hướng dẫn cài đặt Vencord DEV</summary>
-<br>
-
-- Video hướng dẫn cài đặt Vencord DEV Build bởi [@daveyy1](https://discordappuser.com/users/549244932213309442): _Nhấp vào hình ảnh dưới đây để xem hướng dẫn_
-
-[![Hướng dẫn cài đặt Plugin bên thứ ba](https://camo.githubusercontent.com/e30590c30a822b3a19fcba0e92cddb3b62aa1b09ac1a10e1958415e26d397090/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f387765786a536f38664e772f6d617872657364656661756c742e6a7067)](https://www.youtube.com/watch?v=8wexjSo8fNw)
-
-</details>
+- Phiên bản bạn đang sử dụng là **Vencord DEV Build**. Nếu bạn không biết cách cài đặt, bạn có thể [nhấp vào đây](https://docs.vencord.dev/installing/) để đọc hướng dẫn cài đặt, nhưng hãy xem xét sử dụng `https://github.com/gujarathisampath/VeeeCord.git` thay vì `https://github.com/Vendicated/Vencord.git` khi bạn nhân bản, vì VeeeCord đã sửa đổi phiên bản VỚI CSP cho fakeProfile.
 
 ### 2. Cài đặt Plugin
 
@@ -69,10 +60,11 @@ curl -o- 'https://raw.githubusercontent.com/ExtbhiteEAS/fakeProfile/refs/heads/m
 
 - Bạn có thể cài đặt fakeProfile và Vencord DEV Build thông qua lệnh thủ công:
 ```shell
-git clone https://github.com/Vendicated/Vencord.git
-cd Vencord/ && sudo npm i -g pnpm && pnpm i
+git clone https://github.com/gujarathisampath/VeeeCord.git
+cd VeeeCord/ && sudo npm i -g pnpm && pnpm i
 cd src/ && mkdir userplugins
 cd userplugins/ && git clone https://github.com/gujarathisampath/fakeProfile.git && pnpm build
+sudo pnpm inject
 ```
 
 - Sau các lệnh thủ công đó thì bạn đã cài đặt thành công Vencord DEV Build với fakeProfile tuy nhiên để khởi động thủ công thì bạn cần nhập lệnh `pnpm start`.
