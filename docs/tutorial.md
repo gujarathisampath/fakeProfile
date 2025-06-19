@@ -1,5 +1,6 @@
 > [!WARNING]
-> All actions will do in Discord server by the bot. **TO SEE CHANGES YOU NEED INSTALL PLUGIN. YOU WILL NOT SEE ANY RESULTS WITHOUT PLUGIN, CHECK [installation.md](/docs/installation.md) FOR INSTALLATION INFORMATION.**
+> All actions will do in Discord server by the bot and these changes will be applied only on fakeProfile's side server not Discord's.
+> **TO SEE CHANGES YOU NEED INSTALL PLUGIN. YOU WILL NOT SEE ANY RESULTS WITHOUT PLUGIN, CHECK [installation.md](/docs/installation.md) FOR INSTALLATION INFORMATION.**
 
 ### 1. How to request banner?
 
