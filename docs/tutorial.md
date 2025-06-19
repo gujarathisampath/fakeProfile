@@ -70,7 +70,7 @@
 - Upload your badge to Imgur
 - Copy URL of your future badge like this by right-click:
 
- <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif?raw=true" alt="How to get direcly image from Imgur">
+ <img src="/docs/assets/imgur_link_copy.gif" alt="How to get direcly image from Imgur">
 
 - Go to [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
 - Use command `/badges add` `Name` `Icon` like this:

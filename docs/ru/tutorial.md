@@ -70,7 +70,7 @@
 - Загрузите ваш значок в [Imgur](https://imgur.com/upload)
 - Скопируйте ссылку вашего будущего значка правой кнопкой мыши:
 
- <img src="https://github.com/ExtbhiteEAS/fakeProfile/blob/main/assets/ezgif-3-1a6f47df33.gif?raw=true" alt="How to get direcly image from Imgur">
+ <img src="/docs/assets/imgur_link_copy.gif" alt="How to get direcly image from Imgur">
 
 - Зайдите в [#command](https://discord.com/channels/1117373291095662623/1215640671457771540)
 - Используйте команду `/badges add` `Name` `Icon` как на изображении ниже:
