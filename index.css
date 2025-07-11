@@ -14,7 +14,7 @@
 .vc-fpt-preview * {
     pointer-events: none;
 }
-/* stylelint-disable property-no-vendor-prefix */
+
 .custom-nameplate {
     position: absolute;
     left: 0;
