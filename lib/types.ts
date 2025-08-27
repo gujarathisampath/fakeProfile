@@ -7,7 +7,7 @@
 import { User } from "discord-types/general";
 
 export interface UserProfile extends User {
-    profileEffectId: string;
+    profileEffect: {};
     userId: string;
     themeColors?: Array<number>;
 }
