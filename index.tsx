@@ -176,7 +176,11 @@ export default definePlugin({
                 if (settings.store.enableProfileEffects && userData?.profileEffectId) {
                     mergeData = {
                         ...mergeData,
-                        profileEffectId: userData.profileEffectId
+                        profileEffect: {
+                            id: userData.profileEffectId,
+                            expire: null,
+                            skuId: null,
+                        }
                     };
                 }
 
