@@ -54,7 +54,7 @@ export default definePlugin({
         {
             find: "getAvatarDecorationURL:",
             replacement: {
-                match: /(?<=function \i\(\i\){)(?=let{avatarDecoration)/,
+                match: /(?<=function \i\((\i)\){)(?=let{avatarDecoration)/,
                 replace: "const vcDecoration=$self.getAvatarDecorationURL(arguments[0]);if(vcDecoration)return vcDecoration;"
             }
         },
@@ -116,7 +116,7 @@ export default definePlugin({
             group: true,
             replacement: [
                 {
-                    match: /(?<=TryItOut:\i,guildId:\i}\),)(?<=user:(\i).+?)/,
+                    match: /(?<=\.avatarDecoration,guildId:\i\}\)\),)(?<=user:(\i).+?)/,
                     replace: "vcAvatarDecoration=$self.useUserAvatarDecoration($1),"
                 },
                 {
