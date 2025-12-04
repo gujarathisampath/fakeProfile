@@ -9,8 +9,8 @@ import { ErrorBoundary } from "@components/index";
 import { copyWithToast } from "@utils/discord";
 import { Margins } from "@utils/margins";
 import definePlugin from "@utils/types";
+import { User } from "@vencord/discord-types";
 import { Button, Toasts, UserStore } from "@webpack/common";
-import { User } from "discord-types/general";
 import virtualMerge from "virtual-merge";
 
 import style from "./index.css?managed";
@@ -54,14 +54,14 @@ export default definePlugin({
         {
             find: "getAvatarDecorationURL:",
             replacement: {
-                match: /(?<=function \i\((\i)\){)(?=let{avatarDecoration)/,
+                match: /(?<=function \i\(\i\){)(?=let{avatarDecoration)/,
                 replace: "const vcDecoration=$self.getAvatarDecorationURL(arguments[0]);if(vcDecoration)return vcDecoration;"
             }
         },
         {
             find: "#{intl::USER_SETTINGS_RESET_PROFILE_THEME}",
             replacement: {
-                match: /#{intl::USER_SETTINGS_RESET_PROFILE_THEME}\)}\)(?<=color:(\i),.{0,500}?color:(\i),.{0,500}?)/,
+                match: /#{intl::USER_SETTINGS_RESET_PROFILE_THEME}\).+?}\)(?=\])(?<=color:(\i),.{0,500}?color:(\i),.{0,500}?)/,
                 replace: "$&,$self.addCopy3y3Button({primary:$1,accent:$2})"
             }
         },
@@ -103,10 +103,6 @@ export default definePlugin({
                 {
                     match: /(getUserAvatarURL:)(\i),/,
                     replace: "$1$self.getAvatarHook($2),"
-                },
-                {
-                    match: /(getUserAvatarURL:\i\(\){return )(\i)}/,
-                    replace: "$1$self.getAvatarHook($2)}"
                 }
             ]
         },
@@ -129,22 +125,36 @@ export default definePlugin({
                 }
             ]
         },
-        //{
-        //    find: "\"ProfileEffectStore\"",
-        //    replacement: {
-        //        match: /getProfileEffectById\((\i)\){return null!=\i\?(\i)\[\i\]:void 0/,
-        //        replace: "getProfileEffectById($1){return $self.getProfileEffectById($1, $2)"
-        //    }
-        //},
+        // {
+        //     find: "\"ProfileEffectStore\"",
+        //     replacement: {
+        //         match: /getProfileEffectById\((\i)\){return null!=\i\?(\i)\[\i\]:void 0/,
+        //         replace: "getProfileEffectById($1){return $self.getProfileEffectById($1, $2)"
+        //     }
+        // },
         {
             find: "#{intl::ACCOUNT_SPEAKING_WHILE_MUTED}",
             replacement: [
+                // Use Decor avatar decoration hook
                 {
-                    match: /(?<=\i\)\({avatarDecoration:)(\i)(?=,)(?<=currentUser:(\i).+?)/,
+                    match: /(?<=\i\)\({avatarDecoration:)\i(?=,)(?<=currentUser:(\i).+?)/,
                     replace: "$self.useUserAvatarDecoration($1)??$&"
                 }
             ]
         },
+        ...[
+            '"Message Username"', // Messages
+            ".nameplatePreview,{", // Nameplate preview
+            "#{intl::ayozFl::raw}", // Avatar preview
+        ].map(find => ({
+            find,
+            replacement: [
+                {
+                    match: /(?<=userValue.{0,25}void 0:)((\i)\.avatarDecoration)/,
+                    replace: "$self.useUserAvatarDecoration($2)??$1"
+                }
+            ]
+        })),
         {
             find: "#{intl::GUILD_OWNER}),",
             replacement: [
@@ -176,12 +186,11 @@ export default definePlugin({
                     mergeData = {
                         ...mergeData,
                         profileEffect: {
-                            expire: null,
+                            expireAt: null,
                             skuId: userData.profileEffectId,
                         }
                     };
                 }
-
                 if (settings.store.enableProfileThemes && colors) {
                     mergeData = {
                         ...mergeData,
@@ -211,7 +220,7 @@ export default definePlugin({
             const avatarUrl = userData?.avatar;
             if (avatarUrl && typeof avatarUrl === "string") {
                 const parsedUrl = new URL(avatarUrl);
-                const image_name = parsedUrl.pathname.split("/").pop()?.replace("a_", "");
+                const image_name = parsedUrl.pathname.split("/").pop()?.replace(/\.(gif|webp)$/i, ".png");
                 if (image_name) {
                     return BASE_URL + "/image/" + image_name;
                 }
@@ -221,7 +230,7 @@ export default definePlugin({
     },
     getAvatarDecorationURL({ avatarDecoration, canAnimate }: { avatarDecoration: Decoration | null; canAnimate?: boolean; }) {
         if (!avatarDecoration || !settings.store.enableAvatarDecorations) return;
-        if (canAnimate && avatarDecoration?.animated !== false) {
+        if (canAnimate && avatarDecoration?.animated) {
             if (avatarDecoration?.skuId === SKU_ID) {
                 const url = new URL(`${BASE_URL}/avatar-decoration-presets/a_${avatarDecoration?.asset}.png`);
                 return url.toString();
@@ -231,7 +240,7 @@ export default definePlugin({
             }
         } else {
             if (avatarDecoration?.skuId === SKU_ID) {
-                const url = new URL(`${BASE_URL}/avatar-decoration-presets/${avatarDecoration?.asset}.png`);
+                const url = new URL(`${BASE_URL}/avatar-decoration-presets/${avatarDecoration?.asset.replace("a_", "")}.png`);
                 return url.toString();
             } else {
                 const url = new URL(`https://cdn.discordapp.com/avatar-decoration-presets/${avatarDecoration?.asset}.png?passthrough=false`);

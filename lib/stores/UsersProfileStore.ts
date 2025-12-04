@@ -7,8 +7,8 @@
 import { addProfileBadge, BadgePosition, removeProfileBadge } from "@api/Badges";
 import { debounce } from "@shared/debounce";
 import { proxyLazy } from "@utils/lazy";
+import { User } from "@vencord/discord-types";
 import { useEffect, useState, zustandCreate } from "@webpack/common";
-import { User } from "discord-types/general";
 
 import { settings } from "../../settings";
 import { Badge, Decoration, getBadges, getEffects, getPresets, getUsers, ProfileEffects } from "../api";
@@ -213,4 +213,3 @@ export function useUserAvatarDecoration(user?: User): Decoration | null | undefi
 
     return null;
 }
-
