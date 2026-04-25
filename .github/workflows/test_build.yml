@@ -1,0 +1,49 @@
+name: Test Build
+description: Build the plugin to ensure it works with TypeScript Discord mod clients like Vencord.
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main, nightly]
+  pull_request:
+    branches: [main, nightly]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+
+      - name: Clone Vencord
+        run: git clone --depth=1 https://github.com/Vendicated/Vencord.git vencord
+
+      - name: Move current repo into Vencord plugins
+        run: |
+          PLUGIN_NAME=$(basename $GITHUB_REPOSITORY)
+          mkdir -p vencord/src/plugins/$PLUGIN_NAME
+          shopt -s extglob
+          cp -r !(vencord|.git|.github) vencord/src/plugins/$PLUGIN_NAME/
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        working-directory: vencord
+        run: pnpm install
+
+      - name: Run pnpm build
+        working-directory: vencord
+        run: pnpm build
+
+      - name: Run pnpm buildWeb
+        working-directory: vencord
+        run: pnpm buildWeb

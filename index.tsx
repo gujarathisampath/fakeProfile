@@ -54,14 +54,14 @@ export default definePlugin({
         {
             find: "getAvatarDecorationURL:",
             replacement: {
-                match: /(?<=function \i\(\i\){)(?=let{avatarDecoration)/,
+                match: /(?<=function \i\((\i)\){)(?=.{0,20}let{avatarDecoration)/,
                 replace: "const vcDecoration=$self.getAvatarDecorationURL(arguments[0]);if(vcDecoration)return vcDecoration;"
             }
         },
         {
             find: "#{intl::USER_SETTINGS_RESET_PROFILE_THEME}",
             replacement: {
-                match: /#{intl::USER_SETTINGS_RESET_PROFILE_THEME}.+?}\)(?=\])(?=\])(?<=color:(\i),.{0,500}?color:(\i),.{0,500}?)/,
+                match: /#{intl::USER_SETTINGS_RESET_PROFILE_THEME}\).+?}\)(?=\])(?<=color:(\i),.{0,500}?color:(\i),.{0,500}?)/,
                 replace: "$&,$self.addCopy3y3Button({primary:$1,accent:$2})"
             }
         },
@@ -80,9 +80,9 @@ export default definePlugin({
             }
         },
         {
-            find: ".banner)==null",
+            find: ':"SHOULD_LOAD");',
             replacement: {
-                match: /(?<=void 0:)\i.getPreviewBanner\(\i,\i,\i\)/,
+                match: /\i(?:\?)?.getPreviewBanner\(\i,\i,\i\)(?=.{0,100}"COMPLETE")/,
                 replace: "$self.useBannerHook(arguments[0])||$&"
 
             }
@@ -93,7 +93,7 @@ export default definePlugin({
             replacement: [
                 {
                     match: /(?<=function\((\i),\i\)\{)(?=let.{20,40},style:)/,
-                    replace: "$1.style=$self.getVoiceBackgroundStyles($1);"
+                    replace: "Object.assign($1.style=$1.style||{},$self.getVoiceBackgroundStyles($1));"
                 }
             ]
         },
@@ -125,15 +125,8 @@ export default definePlugin({
                 }
             ]
         },
-        // {
-        //     find: "\"ProfileEffectStore\"",
-        //     replacement: {
-        //         match: /getProfileEffectById\((\i)\){return null!=\i\?(\i)\[\i\]:void 0/,
-        //         replace: "getProfileEffectById($1){return $self.getProfileEffectById($1, $2)"
-        //     }
-        // },
         {
-            find: "#{intl::ACCOUNT_SPEAKING_WHILE_MUTED}",
+            find: ".DISPLAY_NAME_STYLES_COACHMARK)",
             replacement: [
                 // Use Decor avatar decoration hook
                 {
@@ -143,14 +136,14 @@ export default definePlugin({
             ]
         },
         ...[
-            '"Message Username"', // Messages
-            ".nameplatePreview,{", // Nameplate preview
-            "#{intl::ayozFl::raw}", // Avatar preview
+            "#{intl::GUILD_COMMUNICATION_DISABLED_ICON_TOOLTIP_BODY}", // Messages
+            "#{intl::COLLECTIBLES_NAMEPLATE_PREVIEW_A11Y}", // Nameplate preview
+            "#{intl::COLLECTIBLES_PROFILE_PREVIEW_A11Y}", // Avatar preview
         ].map(find => ({
             find,
             replacement: [
                 {
-                    match: /(?<=userValue.{0,25}void 0:)((\i)\.avatarDecoration)/,
+                    match: /(?<=userValue:)((\i(?:\.author)?)\?\.avatarDecoration)/,
                     replace: "$self.useUserAvatarDecoration($2)??$1"
                 }
             ]
@@ -171,8 +164,8 @@ export default definePlugin({
         {
             find: "role:\"listitem\",innerRef",
             replacement: {
-                match: /focusProps.\i\}=(\i).*?children:\[/,
-                replace: "$&$1.banner,"
+                match: /children:\[(?=.{0,100}\.MEMBER_LIST)/,
+                replace: "$&arguments[0].banner,"
             }
         }
     ],

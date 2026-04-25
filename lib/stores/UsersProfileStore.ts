@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { addProfileBadge, BadgePosition, removeProfileBadge } from "@api/Badges";
+import { addProfileBadge, BadgePosition, ProfileBadge, removeProfileBadge } from "@api/Badges";
 import { debounce } from "@shared/debounce";
 import { proxyLazy } from "@utils/lazy";
 import { User } from "@vencord/discord-types";
@@ -66,12 +66,14 @@ export const useUsersProfileStore = proxyLazy(() => zustandCreate((set: any, get
             if (Array.isArray(userBadges)) {
                 userBadges.forEach(badge => {
                     const newBadge = {
+                        id: "new_badges_profile_badge",
                         iconSrc: badge.badge,
                         description: badge.tooltip,
                         position: BadgePosition.START,
                         shouldShow: ({ userId: badgeUserId }) => badgeUserId === userId,
                         ...(badge.badge_id && { id: badge.badge_id })
-                    };
+                    } satisfies ProfileBadge;
+
                     addProfileBadge(newBadge);
                     newAddedBadges.push(newBadge);
                 });
@@ -166,7 +168,6 @@ export const useUsersProfileStore = proxyLazy(() => zustandCreate((set: any, get
         set({ users: newUsers });
     }
 } as UsersDecorationsState)));
-
 
 export function useUserAvatarDecoration(user?: User): Decoration | null | undefined {
     try {
