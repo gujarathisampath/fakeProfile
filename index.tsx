@@ -29,7 +29,7 @@ export default definePlugin({
         name: "Sampath",
         id: 984015688807100419n,
     }],
-    dependencies: ["MessageDecorationsAPI", "BadgeAPI"],
+    dependencies: ["MessageDecorationsAPI", "BadgeAPI", "MemberListDecoratorsAPI"],
     start: async () => {
         enableStyle(style);
         useUsersProfileStore.getState().fetchBadges();
@@ -158,7 +158,7 @@ export default definePlugin({
                 {
                     match: /(?<=\),nameplate:)(\i)/,
                     replace: "$self.nameplate($1)"
-                }
+                },
             ]
         },
         {
@@ -167,6 +167,15 @@ export default definePlugin({
                 match: /children:\[(?=.{0,100}\.MEMBER_LIST)/,
                 replace: "$&arguments[0].banner,"
             }
+        },
+        {
+            find: ".WIDGETS_RTC_UPSELL_COACHMARK),",
+            replacement: [
+                {
+                    match: /(?<=\i\)\({avatarDecoration:)\i(?=,)(?<=currentUser:(\i).+?)/,
+                    replace: "$self.useUserAvatarDecoration($1)??$&"
+                }
+            ]
         }
     ],
     profileDecodeHook(user: UserProfile) {
@@ -244,12 +253,15 @@ export default definePlugin({
     nameplate(nameplate: Nameplate | undefined) {
         return nameplate;
     },
-    customnameplate(user: User, nameplate: Nameplate | undefined) {
-        const userId = user?.id;
-        const userData = useUsersProfileStore.getState().get(userId);
+    customnameplate(user: User | undefined, nameplate: Nameplate | undefined) {
+        if (!user) return null;
+        const userData = useUsersProfileStore.getState().get(user.id);
         if (userData && userData?.nameplate && settings.store.enableNameplate) {
-            const url = userData.nameplate;
-            const urlStr = typeof url === "object" ? JSON.stringify(url) : url;
+            const raw = userData.nameplate;
+            const urlStr = typeof raw === "object" && raw !== null
+                ? (raw as Nameplate).src
+                : raw as string;
+            if (!urlStr) return null;
             return (<img id={`custom-nameplate-${user.id}`} src={urlStr} className="custom-nameplate" />);
         }
         return null;

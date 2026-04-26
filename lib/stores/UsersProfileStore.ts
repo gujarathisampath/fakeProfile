@@ -51,54 +51,59 @@ export const useUsersProfileStore = proxyLazy(() => zustandCreate((set: any, get
     fetchBadges: debounce(async () => {
         if (!settings.store.enableCustomBadges) return;
 
-        const { addedBadges } = get();
+        try {
+            const { addedBadges } = get();
 
-        addedBadges.forEach(badge => removeProfileBadge(badge));
+            addedBadges.forEach(badge => removeProfileBadge(badge));
 
-        const fetchedBadges = await getBadges();
-        const newBadges = new Map(
-            Object.entries(fetchedBadges).map(([key, value]) => [key, value])
-        );
+            const fetchedBadges = await getBadges();
 
-        const newAddedBadges: any[] = [];
+            if (!fetchedBadges || typeof fetchedBadges !== "object" || Array.isArray(fetchedBadges)) return;
 
-        newBadges.forEach((userBadges, userId) => {
-            if (Array.isArray(userBadges)) {
-                userBadges.forEach(badge => {
-                    const newBadge = {
-                        id: "new_badges_profile_badge",
-                        iconSrc: badge.badge,
-                        description: badge.tooltip,
-                        position: BadgePosition.START,
-                        shouldShow: ({ userId: badgeUserId }) => badgeUserId === userId,
-                        ...(badge.badge_id && { id: badge.badge_id })
-                    } satisfies ProfileBadge;
+            const newBadges = new Map(
+                Object.entries(fetchedBadges).map(([key, value]) => [key, value])
+            );
 
-                    addProfileBadge(newBadge);
-                    newAddedBadges.push(newBadge);
-                });
-            }
-        });
+            const newAddedBadges: any[] = [];
 
-        set({
-            badges: newBadges,
-            addedBadges: newAddedBadges,
-        });
+            newBadges.forEach((userBadges, userId) => {
+                if (Array.isArray(userBadges)) {
+                    userBadges.forEach(badge => {
+                        if (!badge?.badge) return;
+                        const newBadge: ProfileBadge = {
+                            id: badge.badge_id ?? badge.badge,
+                            iconSrc: badge.badge,
+                            description: badge.tooltip,
+                            position: BadgePosition.START,
+                            shouldShow: ({ userId: badgeUserId }) => badgeUserId === userId,
+                        };
+                        addProfileBadge(newBadge);
+                        newAddedBadges.push(newBadge);
+                    });
+                }
+            });
+
+            set({
+                badges: newBadges,
+                addedBadges: newAddedBadges,
+            });
+        } catch (e) {
+            console.error("[fakeProfile] fetchBadges failed:", e);
+        }
     }),
     fetchProfileEffects: debounce(async () => {
-        const { profileEffects } = get();
         const fetchedProfileEffects = await getEffects();
-        const newProfileEffects = new Map(
-            Object.entries(fetchedProfileEffects).map(([key, value]) => [key, value])
+        if (!Array.isArray(fetchedProfileEffects)) return;
+        const newProfileEffects = new Map<string, ProfileEffects>(
+            fetchedProfileEffects.map(effect => [effect.skuId, effect])
         );
         set({
             profileEffects: newProfileEffects,
         });
-
     }),
     fetchDecorations: debounce(async () => {
-        const { decorations } = get();
         const fetchedDecorations = await getPresets();
+        if (!Array.isArray(fetchedDecorations)) return;
         const newDecorations = new Map(
             fetchedDecorations.map(decoration => [decoration.asset, decoration])
         );
@@ -199,12 +204,13 @@ export function useUserAvatarDecoration(user?: User): Decoration | null | undefi
             return destructor;
         }, []);
         if (AvatarDecoration) {
-            const decoration = useUsersProfileStore.getState().decorations.get(AvatarDecoration);
+            let decoration = useUsersProfileStore.getState().decorations.get(AvatarDecoration);
             if (!decoration) {
-                useUsersProfileStore.getState().fetchDecorations();
-                const decoration = useUsersProfileStore.getState().decorations.get(AvatarDecoration);
-                return { asset: AvatarDecoration, skuId: decoration.skuId, animated: decoration.animated };
+                // fire-and-forget: hook can't be async; next render will pick up the result via subscription
+                void useUsersProfileStore.getState().fetchDecorations();
+                decoration = useUsersProfileStore.getState().decorations.get(AvatarDecoration);
             }
+            if (!decoration) return null;
             return { asset: AvatarDecoration, skuId: decoration.skuId, animated: decoration.animated };
         }
         return null;
