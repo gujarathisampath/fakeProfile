@@ -7,6 +7,7 @@
 import { User } from "@vencord/discord-types";
 
 export interface UserProfile extends User {
+    bio: string;
     profileEffect: {};
     userId: string;
     themeColors?: Array<number>;

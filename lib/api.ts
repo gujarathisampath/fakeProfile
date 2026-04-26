@@ -72,11 +72,11 @@ export interface Decors {
 }
 
 export const getEffects = async (): Promise<ProfileEffects[]> => fetch(BASE_URL + "/profile-effects").then(c => c.json());
-export const getBadges = async (): Promise<Badge[]> => fetch(BASE_URL + "/badges").then(c => c.json());
+export const getBadges = async (): Promise<Record<string, Badge[]>> => fetch(BASE_URL + "/badges").then(c => c.json());
 
 export const getPresets = async (): Promise<Decors[]> => fetch(BASE_URL + "/decorations").then(c => c.json());
 
-export const getUsers = async (ids?: string[]): Promise<Record<string, string | null>> => {
+export const getUsers = async (ids?: string[]): Promise<Record<string, Partial<UserProfile> | null>> => {
     if (ids?.length === 0) return {};
 
     const url = new URL(BASE_URL + "/users");

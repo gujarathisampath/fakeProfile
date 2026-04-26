@@ -3,10 +3,9 @@
   <h1><img src="https://i.imgur.com/iDlsg7L.png" alt="Lumi Logo" width="25"><strong>・fakeProfile</strong></h1>
   Плагин <strong>всё в одном</strong> для кастомизации вашего Discord-профиля
   <br>
-  <a href="https://github.com/TheLumiDevs/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
+  <a href="https://github.com/gujarathisampath/fakeProfile"><img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="en_US" width="25"></a>
   <br>
   <h6>Хотите перевести? Пожалуйста, сделайте форк и сделайте запрос вашего перевода.</h6>
-  <h6>Этот репозиторий является форком <a href="https://github.com/gujarathisampath/fakeProfile">основного fakeProfile</a>, пожалуйста оставьте звезду в нём.</h6>
 </div>
 
 <!-- MARKDOWN BADGED -->
@@ -16,7 +15,7 @@
   <img src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white" alt="CSS"></a>
   <a href="https://discord.gg/ffmkewQ4R7"><img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord Server"></a>
   <br>
-  <a href="https://github.com/TheLumiDevs/fakeProfile/commits/main/"><img src="https://img.shields.io/github/last-commit/TheLumiDevs/fakeProfile?&style=for-the-badge&color=FFFFFF&logoColor=D9E0EE&labelColor=42A5F5%22width=%22200"></a>
+  <a href="https://github.com/gujarathisampath/fakeProfile/commits/main/"><img src="https://img.shields.io/github/last-commit/gujarathisampath/fakeProfile?&style=for-the-badge&color=FFFFFF&logoColor=D9E0EE&labelColor=42A5F5%22width=%22200"></a>
   <br>
   <h6><strong>Поддержка трёх клиентов</strong></h6>
   <a href="https://github.com/pyoncord/Bunny"><img src="https://i.imgur.com/YjtQqBQ.png" alt="Pyoncord" width="50"></a>
@@ -68,8 +67,8 @@
 Если вам понравился или заинтересованы в этом проекте, - вы можете оставить **звезду** и поделиться этим проектом с людьми, которые хотят что и вы. Это будет отличной мотивацией для нас, чтобы продолжить разработку этого проекта, чтобы сделать даже лучше. Спасибо вам огромное.
 
 <p align="center">
-  <a href="https://github.com/TheLumiDevs/fakeProfile" style="pointer-events: none; cursor: default;">
-    <img src="https://m3-markdown-badges.vercel.app/stars/2/2//TheLumiDevs/fakeProfile" alt="Leave us a star" width="200">
+  <a href="https://github.com/gujarathisampath/fakeProfile" style="pointer-events: none; cursor: default;">
+    <img src="https://m3-markdown-badges.vercel.app/stars/2/2//gujarathisampath/fakeProfile" alt="Leave us a star" width="200">
   </a>
 </p>
 
@@ -80,5 +79,5 @@
 <br>
 <div align="center">
   <img src="https://i.imgur.com/iDlsg7L.png" alt="Lumi Logo" width="100">
-  <h6>@2023-2025 <strong>Lumi Comunity</strong></h6>
+  <h6>@2023-2025 <strong>Lumi Community</strong></h6>
 </div>

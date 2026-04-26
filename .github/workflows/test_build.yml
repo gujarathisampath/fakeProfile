@@ -19,14 +19,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Clone Vencord
-        run: git clone --depth=1 https://github.com/Vendicated/Vencord.git vencord
+        run: git clone --depth=1 https://github.com/Equicord/Equicord.git Equicord
 
-      - name: Move current repo into Vencord plugins
+      - name: Move current repo into Equicord plugins
         run: |
           PLUGIN_NAME=$(basename $GITHUB_REPOSITORY)
-          mkdir -p vencord/src/plugins/$PLUGIN_NAME
+          mkdir -p Equicord/src/plugins/$PLUGIN_NAME
           shopt -s extglob
-          cp -r !(vencord|.git|.github) vencord/src/plugins/$PLUGIN_NAME/
+          cp -r !(Equicord|.git|.github) Equicord/src/plugins/$PLUGIN_NAME/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,13 +37,13 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
-        working-directory: vencord
+        working-directory: Equicord
         run: pnpm install
 
       - name: Run pnpm build
-        working-directory: vencord
+        working-directory: Equicord
         run: pnpm build
 
       - name: Run pnpm buildWeb
-        working-directory: vencord
+        working-directory: Equicord
         run: pnpm buildWeb
