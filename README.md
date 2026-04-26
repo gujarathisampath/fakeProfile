@@ -94,5 +94,5 @@ If you feel loved or interested in this project, you can leave us a **star** and
 <br>
 <div align="center">
   <img src="https://i.imgur.com/iDlsg7L.png" alt="Lumi Logo" width="100">
-  <h6>@2023-2025 <strong>Lumi Comunity</strong></h6>
+  <h6>@2023-2025 <strong>Lumi Community</strong></h6>
 </div>
