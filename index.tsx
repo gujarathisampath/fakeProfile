@@ -91,7 +91,7 @@ function CustomNameplatePortal({ userId, url }: { userId: string, url: string; }
                         <source src={videoUrl} type="video/mp4" />
                     </video>
                 ) : (
-                    <img src={url} className="vc-custom-nameplate-img" />
+                    <CachedImage src={url} className="vc-custom-nameplate-img" />
                 )}
             </div>
         </div>
@@ -104,7 +104,7 @@ function CustomNameplatePortal({ userId, url }: { userId: string, url: string; }
     );
 }
 
-import { removeProfileBadge } from "@api/Badges";
+import { addProfileBadge, BadgePosition, ProfileBadge, removeProfileBadge } from "@api/Badges";
 
 import style from "./index.css?managed";
 import { Decoration } from "./lib/api";
@@ -113,7 +113,23 @@ import { useUserAvatarDecoration, useUsersProfileStore } from "./lib/stores/User
 import { Nameplate, UserProfile } from "./lib/types";
 import { decode, encode } from "./lib/utils/profile";
 import { settings } from "./settings";
+import { CachedImage } from "./ui/CachedImage";
 import { fakeProfileSection } from "./ui/fakeProfileSection";
+
+const globalBadgeLoader: ProfileBadge = {
+    id: "fake_profile_global_badge_loader",
+    getBadges(userInfo) {
+        if (!settings.store.enableCustomBadges) return [];
+        const userBadges = useUsersProfileStore.getState().badges.get(userInfo.userId);
+        if (!userBadges || !Array.isArray(userBadges)) return [];
+        return userBadges.map((badge, idx) => ({
+            id: badge.badge_id || `fake_profile_badge_${userInfo.userId}_${idx}`,
+            iconSrc: badge.badge,
+            description: badge.tooltip,
+            position: BadgePosition.START
+        }));
+    }
+};
 
 export default definePlugin({
     name: "fakeProfile",
@@ -126,7 +142,7 @@ export default definePlugin({
     managedStyle: style,
     dependencies: ["MessageDecorationsAPI", "BadgeAPI", "MemberListDecoratorsAPI"],
     start: async () => {
-        useUsersProfileStore.getState().fetchBadges();
+        addProfileBadge(globalBadgeLoader);
         useUsersProfileStore.getState().fetchProfileEffects();
         useUsersProfileStore.getState().fetchDecorations();
         useUsersProfileStore.getState().fetch(UserStore.getCurrentUser().id, true);

@@ -4,13 +4,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { addProfileBadge, BadgePosition, ProfileBadge, removeProfileBadge } from "@api/Badges";
 import { debounce } from "@shared/debounce";
 import { proxyLazy } from "@utils/lazy";
 import { User } from "@vencord/discord-types";
-import { useEffect, useState, zustandCreate } from "@webpack/common";
+import { useEffect, UserStore, useState, zustandCreate } from "@webpack/common";
 
-import { Badge, Decoration, getBadges, getEffects, getPresets, getUsers, ProfileEffects } from "../../lib/api";
+import { Badge, Decoration, getEffects, getPresets, getUsers, ProfileEffects } from "../../lib/api";
 import { settings } from "../../settings";
 import { FETCH_COOLDOWN } from "../constants";
 
@@ -52,54 +51,11 @@ export const useUsersProfileStore = proxyLazy(() => zustandCreate((set: any, get
         if (!settings.store.enableCustomBadges) return;
 
         try {
-            const { addedBadges } = get();
-
-            addedBadges.forEach(badge => removeProfileBadge(badge));
-
-            const fetchedBadges = await getBadges();
-
-            if (!fetchedBadges || typeof fetchedBadges !== "object" || Array.isArray(fetchedBadges)) return;
-
-            const newBadges = new Map(
-                Object.entries(fetchedBadges).map(([key, value]) => [key, value])
-            );
-
-            const newAddedBadges: any[] = [];
-            const entries = Object.entries(fetchedBadges);
-            let index = 0;
-
-            const chunk = () => {
-                const limit = Math.min(index + 100, entries.length);
-                for (; index < limit; index++) {
-                    const [userId, userBadges] = entries[index];
-                    if (Array.isArray(userBadges)) {
-                        userBadges.forEach(badge => {
-                            if (!badge?.badge) return;
-                            const newBadge = {
-                                id: "new_badges_profile_badge",
-                                iconSrc: badge.badge,
-                                description: badge.tooltip,
-                                position: BadgePosition.START,
-                                shouldShow: ({ userId: badgeUserId }) => badgeUserId === userId,
-                                ...(badge.badge_id && { id: badge.badge_id })
-                            } satisfies ProfileBadge;
-                            addProfileBadge(newBadge);
-                            newAddedBadges.push(newBadge);
-                        });
-                    }
-                }
-
-                if (index < entries.length) {
-                    setTimeout(chunk, 10);
-                } else {
-                    set({
-                        badges: newBadges,
-                        addedBadges: newAddedBadges,
-                    });
-                }
-            };
-
-            chunk();
+            const { fetch: fetchUser } = get();
+            const currentUser = UserStore.getCurrentUser();
+            if (currentUser?.id) {
+                await fetchUser(currentUser.id, true);
+            }
         } catch (e) {
             console.error("[fakeProfile] fetchBadges failed:", e);
         }
@@ -127,7 +83,7 @@ export const useUsersProfileStore = proxyLazy(() => zustandCreate((set: any, get
     }),
     fetchQueue: new Set(),
     bulkFetch: debounce(async () => {
-        const { fetchQueue, users, addedBadges } = get();
+        const { fetchQueue, users } = get();
 
         if (fetchQueue.size === 0) return;
 
@@ -137,30 +93,20 @@ export const useUsersProfileStore = proxyLazy(() => zustandCreate((set: any, get
         const fetchedUsers = await getUsers(fetchIds);
 
         const newUsers = new Map(users);
-        const newAddedBadges = [...addedBadges];
+        const newBadges = new Map(get().badges);
 
         const now = new Date();
         for (const fetchId of fetchIds) {
             const newUser = fetchedUsers[fetchId] ?? null;
             newUsers.set(fetchId, newUser ? { ...newUser as any, fetchedAt: now } : null as any);
             if (newUser && Array.isArray(newUser.badges)) {
-                newUser.badges.forEach(badge => {
-                    if (!badge?.badge) return;
-                    const newBadge = {
-                        id: "new_badges_profile_badge",
-                        iconSrc: badge.badge,
-                        description: badge.tooltip,
-                        position: BadgePosition.START,
-                        shouldShow: ({ userId: badgeUserId }) => badgeUserId === fetchId,
-                        ...(badge.badge_id && { id: badge.badge_id })
-                    } satisfies ProfileBadge;
-                    addProfileBadge(newBadge);
-                    newAddedBadges.push(newBadge);
-                });
+                newBadges.set(fetchId, newUser.badges);
+            } else {
+                newBadges.set(fetchId, []);
             }
         }
 
-        set({ users: newUsers, addedBadges: newAddedBadges });
+        set({ users: newUsers, badges: newBadges });
     }),
     async fetch(userId: string, force: boolean = false) {
         const { users, fetchQueue, bulkFetch } = get();
