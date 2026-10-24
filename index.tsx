@@ -9,7 +9,7 @@ import { copyWithToast } from "@utils/discord";
 import { Margins } from "@utils/margins";
 import definePlugin from "@utils/types";
 import { User } from "@vencord/discord-types";
-import { Button, ReactDOM, Toasts, useLayoutEffect, useMemo, useRef, UserStore, useState } from "@webpack/common";
+import { Button, ReactDOM, showToast, useLayoutEffect, useMemo, useRef, UserStore, useState } from "@webpack/common";
 import virtualMerge from "virtual-merge";
 
 function CustomNameplatePortal({ userId, url }: { userId: string, url: string; }) {
@@ -410,10 +410,9 @@ export default definePlugin({
             useUsersProfileStore.getState().fetchDecorations();
             useUsersProfileStore.getState().fetchProfileEffects();
             useUsersProfileStore.getState().fetchBadges();
-            Toasts.show({
-                message: "Successfully refetched fakeProfile!",
-                id: Toasts.genId(),
-                type: Toasts.Type.SUCCESS
+            showToast({
+                text: "Successfully refetched fakeProfile!",
+                variant: "success"
             });
         }
     },
